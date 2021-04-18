@@ -1,0 +1,84 @@
+@startuml
+    package "Usuarios" #DDDDDD {
+        class Usuario <<Entity>>{
+            string Id 
+            string Nombres 
+            string Apellidos 
+            string UserName 
+            string Password
+            string Email 
+            string Telefono
+            string Sexo
+        }
+        class Docente <<Entity>>{
+            Departamento Departamento
+        }
+        class JefeDpto <<Entity>>{
+            Departamento Departamento
+        }
+        Class Departamento <<Entity>>{
+            string Id
+            string Nombre
+
+        }
+        class Administrador <<Entity>>
+        Usuario <|-- Docente
+        Usuario <|-- JefeDpto 
+        JefeDpto *-- Departamento
+        Docente *-- Departamento
+        Usuario <|-- Administrador
+    }
+    package "Gestion Actividad" #DDDDDD{
+        class TipoActividad <<Entity>>{
+            int TipoActividadId
+            string Nombre
+        }
+        class Actividad <<Entity>>{
+            int Id
+            TipoActividad TipoActividad 
+            Docente Docente 
+            int HorasAsignadas 
+            string Estado 
+            DateTime FechaAsignacion 
+        }
+        Actividad *-- TipoActividad
+        Actividad *-- Docente
+    }
+    package "Gestion Plazo Apertura" #DDDDDD{
+        class Apertura <<Entity>>
+    }
+    package "Gestion Plan de Accion" #DDDDDD {
+        Class PlanAccion <<Entity>>{
+             int IdPlanAcciones 
+             List<ItemPlan> Items 
+             DateTime Fecha 
+             int ActividadId 
+             Actividad Actividad 
+        }
+        class PlanItem <<Entity>>{
+             int IdItem 
+             AccionPlaneada AccionPlaneada
+             int PlanAccionesId
+             AccionRealizada AccionRealizada 
+        }
+        class AccionPlaneada <<ValueObject>>
+        class AccionRealizada <<ValueObject>>{
+            Evidencia Evidencia
+        }
+        Class Accion <<Entity>>{
+             string Descripcion 
+        }
+        class Evidencia <<ValueObject  >>{
+            string Ruta
+            DateTime FechaCarga
+        }
+        PlanAccion *-- Actividad
+        PlanAccion *-- PlanItem
+        PlanItem *-- AccionRealizada
+        PlanItem *-- AccionPlaneada
+        AccionRealizada *-- Evidencia
+        Accion <|-- AccionPlaneada
+        Accion <|-- AccionRealizada
+
+    }
+@enduml
