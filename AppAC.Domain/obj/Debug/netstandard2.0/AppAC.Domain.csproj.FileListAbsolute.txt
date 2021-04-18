@@ -1,0 +1,8 @@
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Domain\bin\Debug\netstandard2.0\AppAC.Domain.deps.json
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Domain\bin\Debug\netstandard2.0\AppAC.Domain.dll
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Domain\bin\Debug\netstandard2.0\AppAC.Domain.pdb
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Domain\obj\Debug\netstandard2.0\AppAC.Domain.csprojAssemblyReference.cache
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Domain\obj\Debug\netstandard2.0\AppAC.Domain.AssemblyInfoInputs.cache
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Domain\obj\Debug\netstandard2.0\AppAC.Domain.AssemblyInfo.cs
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Domain\obj\Debug\netstandard2.0\AppAC.Domain.dll
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Domain\obj\Debug\netstandard2.0\AppAC.Domain.pdb

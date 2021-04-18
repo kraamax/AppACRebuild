@@ -1,0 +1,15 @@
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Infrastructure.Systems\bin\Debug\net5.0\AppAC.Infrastructure.Systems.deps.json
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Infrastructure.Systems\bin\Debug\net5.0\AppAC.Infrastructure.Systems.dll
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Infrastructure.Systems\bin\Debug\net5.0\ref\AppAC.Infrastructure.Systems.dll
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Infrastructure.Systems\bin\Debug\net5.0\AppAC.Infrastructure.Systems.pdb
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Infrastructure.Systems\obj\Debug\net5.0\AppAC.Infrastructure.Systems.csprojAssemblyReference.cache
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Infrastructure.Systems\obj\Debug\net5.0\AppAC.Infrastructure.Systems.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Infrastructure.Systems\obj\Debug\net5.0\AppAC.Infrastructure.Systems.AssemblyInfoInputs.cache
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Infrastructure.Systems\obj\Debug\net5.0\AppAC.Infrastructure.Systems.AssemblyInfo.cs
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Infrastructure.Systems\obj\Debug\net5.0\AppAC.Infrastructure.Systems.csproj.CoreCompileInputs.cache
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Infrastructure.Systems\obj\Debug\net5.0\AppAC.Infrastructure.Systems.dll
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Infrastructure.Systems\obj\Debug\net5.0\ref\AppAC.Infrastructure.Systems.dll
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Infrastructure.Systems\obj\Debug\net5.0\AppAC.Infrastructure.Systems.pdb
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Infrastructure.Systems\bin\Debug\net5.0\AppAC.Domain.dll
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Infrastructure.Systems\bin\Debug\net5.0\AppAC.Domain.pdb
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Infrastructure.Systems\obj\Debug\net5.0\AppAC.Infrastructure.Systems.csproj.CopyComplete

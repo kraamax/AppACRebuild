@@ -10,6 +10,6 @@ namespace AppAC.Domain
         public List<ItemPlan> Items { get; set; }
         public DateTime Fecha { get; set; }
         public int ActividadId { get; set; }
-        public Actividad Actividad { get; set; }
+        public TipoActividad Actividad { get; set; }
     }
 }

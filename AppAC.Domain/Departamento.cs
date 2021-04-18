@@ -6,7 +6,11 @@ namespace AppAC.Domain
 {
     public class Departamento
     {
-        public int IdDpto{ get; set; }
+        public Departamento(string codigoDpto, string nombreDpto)
+        {
+            CodigoDpto = codigoDpto;
+            NombreDpto = nombreDpto;
+        }
         public string CodigoDpto { get; set; }
         public string NombreDpto { get; set; }
     }

@@ -1,0 +1,12 @@
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Domain\bin\Debug\net5.0\AppAC.Domain.deps.json
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Domain\bin\Debug\net5.0\AppAC.Domain.dll
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Domain\bin\Debug\net5.0\ref\AppAC.Domain.dll
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Domain\bin\Debug\net5.0\AppAC.Domain.pdb
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Domain\obj\Debug\net5.0\AppAC.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Domain\obj\Debug\net5.0\AppAC.Domain.AssemblyInfoInputs.cache
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Domain\obj\Debug\net5.0\AppAC.Domain.AssemblyInfo.cs
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Domain\obj\Debug\net5.0\AppAC.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Domain\obj\Debug\net5.0\AppAC.Domain.dll
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Domain\obj\Debug\net5.0\ref\AppAC.Domain.dll
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Domain\obj\Debug\net5.0\AppAC.Domain.pdb
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Domain\obj\Debug\net5.0\AppAC.Domain.csprojAssemblyReference.cache
