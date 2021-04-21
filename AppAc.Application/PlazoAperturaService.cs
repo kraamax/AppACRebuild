@@ -26,8 +26,10 @@ namespace AppAC.Application
         public string CrearPlazoApertura(PlazoAperturaRequest request) {
             var plazoApertura = new PlazoApertura();
             var response = plazoApertura.EstablecerPlazo(request.FechaInicio, request.FechaFin);
-            _plazoAperturaRepository.Add(plazoApertura);
-            _unitOfWork.Commit();
+            if (response.Equals("El plazo fue correctamente ingresado")) { 
+                _plazoAperturaRepository.Add(plazoApertura);
+                _unitOfWork.Commit();
+            }
             return response;
         }
     }
