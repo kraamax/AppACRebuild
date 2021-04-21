@@ -10,3 +10,6 @@ C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Domain\obj\Debug\net5.0\AppAC
 C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Domain\obj\Debug\net5.0\ref\AppAC.Domain.dll
 C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Domain\obj\Debug\net5.0\AppAC.Domain.pdb
 C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Domain\obj\Debug\net5.0\AppAC.Domain.csprojAssemblyReference.cache
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Domain\bin\Debug\net5.0\AppAC.Domain.runtimeconfig.json
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Domain\bin\Debug\net5.0\AppAC.Domain.runtimeconfig.dev.json
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Domain\obj\Debug\net5.0\AppAC.Domain.genruntimeconfig.cache

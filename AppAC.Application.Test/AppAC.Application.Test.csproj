@@ -15,6 +15,8 @@
   <ItemGroup>
     <ProjectReference Include="..\AppAc.Application\AppAC.Application.csproj" />
     <ProjectReference Include="..\AppAC.Domain\AppAC.Domain.csproj" />
+    <ProjectReference Include="..\AppAC.Infrastructure.Data\AppAC.Infrastructure.Data.csproj" />
+    <ProjectReference Include="..\AppAC.Infrastructure.Systems\AppAC.Infrastructure.Systems.csproj" />
   </ItemGroup>
 
 </Project>

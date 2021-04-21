@@ -22,8 +22,8 @@ namespace AppAC.Domain.Test
         {
             var fechaInicio = new DateTime(2021, 03, 20);
             var fechaFin = new DateTime(2021, 02, 20);
-            var plazoApertura = new PlazoApertura(123,fechaInicio,fechaFin);
-            var resultado=plazoApertura.ValidarFechas();
+            var plazoApertura = new PlazoApertura();
+            var resultado=plazoApertura.EstablecerPlazo(fechaInicio, fechaFin);
             var esperado = "La fecha de inicio no puede ser mayor o igual a la fecha de fin";
             Assert.AreEqual(esperado,resultado);
         }
@@ -45,8 +45,8 @@ namespace AppAC.Domain.Test
         {
             var fechaInicio = new DateTime(2021, 02, 20);
             var fechaFin = new DateTime(2021, 03, 20);
-            var plazoApertura = new PlazoApertura(123, fechaInicio, fechaFin);
-            var resultado = plazoApertura.ValidarFechas();
+            var plazoApertura = new PlazoApertura();
+            var resultado = plazoApertura.EstablecerPlazo(fechaInicio, fechaFin);
             var esperado = "El plazo fue correctamente ingresado";
             Assert.AreEqual(esperado, resultado);
         }
@@ -67,8 +67,8 @@ namespace AppAC.Domain.Test
         {
             var fechaInicio = new DateTime(2021, 02, 20);
             var fechaFin = new DateTime(2021, 02, 20);
-            var plazoApertura = new PlazoApertura(123, fechaInicio, fechaFin);
-            var resultado = plazoApertura.ValidarFechas();
+            var plazoApertura = new PlazoApertura();
+            var resultado = plazoApertura.EstablecerPlazo(fechaInicio, fechaFin);
             var esperado = "La fecha de inicio no puede ser mayor o igual a la fecha de fin";
             Assert.AreEqual(esperado, resultado);
         }

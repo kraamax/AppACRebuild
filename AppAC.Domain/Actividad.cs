@@ -1,10 +1,11 @@
-﻿using System;
+﻿using AppAC.Domain.Base;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace AppAC.Domain
 {
-    public class Actividad
+    public class Actividad: Entity<string>, IAggregateRoot
     {
         public Actividad(TipoActividad tipoActividad)
         {
@@ -12,14 +13,13 @@ namespace AppAC.Domain
             Estado = "";
             FechaAsignacion = DateTime.Now;
         }
-        public int Id { get; set; }
         public TipoActividad TipoActividad { get; set; }
         public Docente Docente { get; set; }
         public int HorasAsignadas { get; set; }
         public string Estado { get; set; }
         public DateTime FechaAsignacion { get; set; }
    
-        public string AsignarActividad(Docente docente,int horasAsignadas)
+        public string Asignar(Docente docente,int horasAsignadas)
         {
             if (horasAsignadas <= 0)
             {

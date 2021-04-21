@@ -1,8 +1,9 @@
-﻿using System;
+﻿using AppAC.Domain.Base;
+using System;
 
 namespace AppAC.Domain
 {
-    public class TipoActividad
+    public class TipoActividad: Entity<string>, IAggregateRoot
     {
         public TipoActividad(string nombreActividad)
         {

@@ -24,9 +24,9 @@ namespace AppAC.Domain.Test
         {
             var dpto = new Departamento("AB21", "Departamento de Ingenieria de Sistemas");
             var docente = new Docente("103423424","Juan", "Perez","chevichantoti@gmail.com","65434343","Masculino",dpto);
-            var actividad = new TipoActividad("Asesoria");
-            var actividadAsignada = new Actividad(actividad);
-            var resultado = actividadAsignada.AsignarActividad(docente,0);
+            var tipoActividad = new TipoActividad("Asesoria");
+            var actividad = new Actividad(tipoActividad);
+            var resultado = actividad.Asignar(docente,0);
             var esperado = "Las horas asignadas a la actividad tienen que ser mayor a 0";
             Assert.AreEqual(esperado,resultado);
         }
@@ -46,9 +46,9 @@ namespace AppAC.Domain.Test
         {
             var dpto = new Departamento("AB21", "Departamento de Ingenieria de Sistemas");
             var docente = new Docente("103423424", "Juan", "Perez", "chevichantoti@gmail.com", "65434343", "Masculino", dpto);
-            var actividad = new TipoActividad("Asesoria");
-            var actividadAsignada = new Actividad(actividad);
-            var resultado = actividadAsignada.AsignarActividad(docente,-1);
+            var tipoActividad = new TipoActividad("Asesoria");
+            var actividad = new Actividad(tipoActividad);
+            var resultado = actividad.Asignar(docente,-1);
             var esperado = "Las horas asignadas a la actividad tienen que ser mayor a 0";
             Assert.AreEqual(esperado, resultado);
         }
@@ -68,9 +68,9 @@ namespace AppAC.Domain.Test
         {
             var dpto = new Departamento("AB21", "Departamento de Ingenieria de Sistemas");
             var docente = new Docente("103423424", "Juan", "Perez", "chevichantoti@gmail.com", "65434343", "Masculino", dpto);
-            var actividad = new TipoActividad("Asesoria");
-            var actividadAsignada = new Actividad(actividad);
-            var resultado = actividadAsignada.AsignarActividad(docente,5);
+            var tipoActividad = new TipoActividad("Asesoria");
+            var actividad = new Actividad(tipoActividad);
+            var resultado = actividad.Asignar(docente,5);
             var esperado = "Se asignaron 5 al docente Juan";
             Assert.AreEqual(esperado, resultado);
         }
@@ -90,9 +90,9 @@ namespace AppAC.Domain.Test
         {
             var dpto = new Departamento("AB21", "Departamento de Ingenieria de Sistemas");
             var docente = new Docente("103423424", "Juan", "Perez", "chevichantoti@gmail.com", "65434343", "Masculino", dpto);
-            var actividad = new TipoActividad("Asesoria");
-            var actividadAsignada = new Actividad(actividad);
-            var resultado = actividadAsignada.AsignarActividad(docente,25);
+            var tipoActividad = new TipoActividad("Asesoria");
+            var actividad = new Actividad(tipoActividad);
+            var resultado = actividad.Asignar(docente,25);
             var esperado = "Las horas asignadas no pueden ser mayor a veinte";
             Assert.AreEqual(esperado, resultado);
         }

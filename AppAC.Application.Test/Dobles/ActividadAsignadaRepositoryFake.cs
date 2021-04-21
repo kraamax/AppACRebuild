@@ -6,7 +6,7 @@ using AppAC.Domain.Contracts;
 
 namespace AppAC.Application.Test.Dobles
 {
-    class ActividadAsignadaRepositoryFake : IActividadAsignadaRepository
+    class ActividadAsignadaRepositoryFake : IActividadRepository
     {
         public Actividad Find(int id)
         {
