@@ -5,8 +5,12 @@ using System.Text;
 
 namespace AppAC.Domain
 {
-    public class Actividad: Entity<string>, IAggregateRoot
+    public class Actividad: Entity<int>, IAggregateRoot
     {
+        public Actividad()
+        {
+
+        }
         public Actividad(TipoActividad tipoActividad)
         {
             TipoActividad = tipoActividad;

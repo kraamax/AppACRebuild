@@ -1,12 +1,12 @@
-﻿using System;
+﻿using AppAC.Domain.Base;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace AppAC.Domain
 {
-    class PlanAccion
+    public class PlanAccion: Entity<int>, IAggregateRoot
     {
-        public int IdPlanAcciones { get; set; }
         public List<ItemPlan> Items { get; set; }
         public DateTime Fecha { get; set; }
         public int ActividadId { get; set; }

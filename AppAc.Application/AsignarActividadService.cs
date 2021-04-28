@@ -8,25 +8,36 @@ namespace AppAc.Application
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IActividadRepository _actividadRepository;
+        private readonly IUsuarioRepository _usuarioRepository;
+        private readonly ITipoActividadRepository _tipoActividadRepository;
         private readonly IMailServer _emailServer;
 
         public AsignarActividadService(
            IUnitOfWork unitOfWork,
            IActividadRepository actividadRepository,
-           IMailServer emailServer
+           IUsuarioRepository usuarioRepository,
+           ITipoActividadRepository tipoActividadRepository,
+        IMailServer emailServer
        )
         {
             _unitOfWork = unitOfWork;
             _actividadRepository = actividadRepository;
+            _usuarioRepository = usuarioRepository;
+            _tipoActividadRepository = tipoActividadRepository;
             _emailServer = emailServer;
         }
-        public string AsignarActividad(int id, Docente docente, int horasAsignadas)
+        public ActividadResponse AsignarActividad(ActividadRequest request)
         {
-            var actividad= _actividadRepository.Find(id);
-            var response = actividad.Asignar(docente, horasAsignadas);
+            var tipoActividad = _tipoActividadRepository.Find(request.TipoActividadId);
+            var docente =(Docente)_usuarioRepository.FindFirstOrDefault(d=>d.Identificacion.Equals(request.IdentificaciónDocente));
+            var actividad = new Actividad(tipoActividad);
+            var response = actividad.Asignar(docente, request.horasAsignadas);
+            _actividadRepository.Add(actividad);
             _unitOfWork.Commit();
-            _emailServer.Send($"Se efectúo la asignacion del a la actividad", docente.Email);
-            return response;
+            _emailServer.Send("Nueva actividad asignada",$"Se efectúo la asignacion del a la actividad", docente.Email);
+            return new ActividadResponse(response);
         }
     }
+    public record ActividadRequest(int TipoActividadId,string IdentificaciónDocente, int horasAsignadas);
+    public record ActividadResponse(string Message);
 }

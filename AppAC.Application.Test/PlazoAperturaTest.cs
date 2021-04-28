@@ -29,7 +29,7 @@ namespace AppAC.Application.Test
             _plazoAperturaService = new PlazoAperturaService(
                 new UnitOfWork(_dbContext),
                 new PlazoAperturaRepository(_dbContext),
-                new MailServer()
+                new MailServerFake()
                 );
         }
 

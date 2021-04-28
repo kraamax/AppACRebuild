@@ -1,8 +1,18 @@
 {
   "version": 2,
-  "dgSpecHash": "j7s2JSXon2bl44EEwoAysQA+AG0T/4pOz+ONw5t7fkIFlSLtIlSCEe1OZEtLh/V011DLsT45YeUV5l82LE9hVA==",
+  "dgSpecHash": "/qlXnU0EtjHiKzVZaQP+vj65Hk9LhHnE5wacEFNNGl4hGJUAyLL9sLCuWEGwoktdo35O2+Wc7I/ehMtLtlOFEg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Sebastian\\source\\repos\\AppAC.Domain\\AppAC.Infrastructure.Systems\\AppAC.Infrastructure.Systems.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Sebastian\\.nuget\\packages\\mailkit\\2.11.1\\mailkit.2.11.1.nupkg.sha512",
+    "C:\\Users\\Sebastian\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
+    "C:\\Users\\Sebastian\\.nuget\\packages\\mimekit\\2.11.0\\mimekit.2.11.0.nupkg.sha512",
+    "C:\\Users\\Sebastian\\.nuget\\packages\\portable.bouncycastle\\1.8.10\\portable.bouncycastle.1.8.10.nupkg.sha512",
+    "C:\\Users\\Sebastian\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
+    "C:\\Users\\Sebastian\\.nuget\\packages\\system.reflection.typeextensions\\4.4.0\\system.reflection.typeextensions.4.4.0.nupkg.sha512",
+    "C:\\Users\\Sebastian\\.nuget\\packages\\system.security.cryptography.cng\\4.7.0\\system.security.cryptography.cng.4.7.0.nupkg.sha512",
+    "C:\\Users\\Sebastian\\.nuget\\packages\\system.security.cryptography.pkcs\\4.7.0\\system.security.cryptography.pkcs.4.7.0.nupkg.sha512",
+    "C:\\Users\\Sebastian\\.nuget\\packages\\system.text.encoding.codepages\\4.4.0\\system.text.encoding.codepages.4.4.0.nupkg.sha512"
+  ],
   "logs": []
 }

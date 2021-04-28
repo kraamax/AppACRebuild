@@ -1,23 +1,24 @@
-﻿using System;
+﻿using AppAC.Domain.Base;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace AppAC.Domain
 {
-    public class Usuario
+    public class Usuario: Entity<int>, IAggregateRoot
     {
-        public Usuario(string id, string nombres, string apellidos, string email, string telefono, string sexo)
+        public Usuario(string identificacion, string nombres, string apellidos, string email, string telefono, string sexo)
         {
-            Id = id;
+            Identificacion = identificacion;
             Nombres = nombres;
             Apellidos = apellidos;
             Email = email;
             Telefono = telefono;
             Sexo = sexo;
             UserName = Email;
-            Password = id;
+            Password = identificacion;
         }
-        public string Id { get; private set; }
+        public string Identificacion { get; private set; }
         public string Nombres { get; private set; }
         public string Apellidos { get; private set; }
         public string UserName { get; private set; }

@@ -7,9 +7,9 @@ namespace AppAC.Application.Test.Dobles
 {
     class MailServerFake : IMailServer
     {
-        public void Send(string v, string email)
+        public string Send(string subject, string body, string email)
         {
-            Console.WriteLine("Se enviar el email");
+            return "";
         }
     }
 }

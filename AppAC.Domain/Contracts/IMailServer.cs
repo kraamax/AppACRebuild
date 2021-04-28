@@ -6,6 +6,6 @@ namespace AppAC.Domain.Contracts
 {
     public interface IMailServer
     {
-        void Send(string v, string email);
+        string Send(string subject, string body, string email);
     }
 }

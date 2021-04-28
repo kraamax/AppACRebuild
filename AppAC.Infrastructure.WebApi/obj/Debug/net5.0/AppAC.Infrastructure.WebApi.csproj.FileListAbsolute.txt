@@ -63,3 +63,6 @@ C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Infrastructure.WebApi\bin\Deb
 C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Infrastructure.WebApi\bin\Debug\net5.0\AppAC.Application.pdb
 C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Infrastructure.WebApi\bin\Debug\net5.0\Humanizer.dll
 C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Infrastructure.WebApi\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Infrastructure.WebApi\bin\Debug\net5.0\MailKit.dll
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Infrastructure.WebApi\bin\Debug\net5.0\MimeKit.dll
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Infrastructure.WebApi\bin\Debug\net5.0\BouncyCastle.Crypto.dll

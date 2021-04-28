@@ -6,7 +6,11 @@ namespace AppAC.Domain
 {
     public class Docente : Usuario
     {
-        public Docente(string id, string nombres, string apellidos, string email, string telefono, string sexo, Departamento departamento) : base(id, nombres, apellidos, email, telefono, sexo)
+        public Docente(string identificacion, string nombres, string apellidos, string email, string telefono, string sexo) : base(identificacion, nombres, apellidos, email, telefono, sexo)
+        {
+        }
+
+        public Docente(string identificacion, string nombres, string apellidos, string email, string telefono, string sexo, Departamento departamento) : base(identificacion, nombres, apellidos, email, telefono, sexo)
         {
             Departamento = departamento;
         }

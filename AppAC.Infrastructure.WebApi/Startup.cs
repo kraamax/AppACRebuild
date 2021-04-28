@@ -32,11 +32,17 @@ namespace AppAC.Infrastructure.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             var connectionString = Configuration.GetConnectionString("AppACContext");//obtiene la configuracion del appsettitgs
-
+            var notificationMetadata =
+                Configuration.GetSection("NotificationMetadata").
+                    Get<NotificationMetadata>();
+            services.AddSingleton(notificationMetadata);
             services.AddDbContext<AppACContext>(opt => opt.UseSqlite(connectionString));
-
             services.AddScoped<IUnitOfWork, UnitOfWork>(); //Crear Instancia por peticion
             services.AddScoped<IPlazoAperturaRepository, PlazoAperturaRepository>(); //Crear Instancia por peticion
+            services.AddScoped<ITipoActividadRepository, TipoActividadRepository>();
+            services.AddScoped<IActividadRepository, ActividadRepository>(); 
+            services.AddScoped<IPlanAccionRepository, PlanAccionRepository>();
+            services.AddScoped<IItemPlanRepository, ItemPlanRepository>();
             services.AddScoped<IDbContext, AppACContext>(); //Crear Instancia por peticion
             services.AddScoped<IMailServer, MailServer>(); //Crear Instancia por peticion
             services.AddControllers();

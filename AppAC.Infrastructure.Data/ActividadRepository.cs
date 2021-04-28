@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AppAC.Infrastructure.Data
 {
-    public class ActividadRepository : GenericRepository<PlazoApertura>, IPlazoAperturaRepository
+    public class ActividadRepository : GenericRepository<Actividad>, IActividadRepository
     {
         public ActividadRepository(IDbContext context) : base(context)
         {
