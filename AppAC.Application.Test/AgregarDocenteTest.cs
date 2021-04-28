@@ -51,7 +51,7 @@ namespace AppAC.Application.Test
                 docente.Sexo,
                 docente.Departamento.Id
                 );
-            var response = _docenteService.crearDocente(request).Mensaje;
+            var response = _docenteService.Handle(request).Mensaje;
             Assert.AreEqual("Se registró correctamente el docente Sebastian", response);
         }
         [Test]
@@ -69,7 +69,7 @@ namespace AppAC.Application.Test
                 docente.Sexo,
                 2
             );
-            var response = _docenteService.crearDocente(request).Mensaje;
+            var response = _docenteService.Handle(request).Mensaje;
             Assert.AreEqual("Se debe asignar un departamento al docente", response);
         }
     }
