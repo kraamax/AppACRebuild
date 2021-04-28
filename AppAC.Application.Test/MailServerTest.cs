@@ -8,7 +8,6 @@ using AppAC.Infrastructure.Systems;
 using System;
 using AppAC.Domain.Contracts;
 using FluentAssertions;
-using Moq;
 
 namespace AppAC.Application.Test
 {

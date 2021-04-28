@@ -26,6 +26,8 @@ namespace AppAC.Application
         public DocenteResponse crearDocente(DocenteRequest request)
         {
             var departamento = _departamentoRepository.Find(request.departamentoId);
+            if (departamento == null)
+                return new DocenteResponse("Se debe asignar un departamento al docente"); 
             var docente = new Docente(request.Identificacion, 
                                         request.Nombres,
                                         request.Apellidos,
@@ -37,11 +39,11 @@ namespace AppAC.Application
             try
             {
                 _usuarioRepository.Add(docente);
-                response = "se guardo correctamente";
+                response = $"Se registró correctamente el docente {docente.Nombres}";
             }
             catch (Exception e)
             {
-                response = "no se pudo guardar";
+                response = "No se pudo registrar";
             }
             _unitOfWork.Commit();
             _emailServer.Send("Registro en AppAC","Se registro en el sistema",docente.Email);
