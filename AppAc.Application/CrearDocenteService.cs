@@ -48,7 +48,6 @@ namespace AppAC.Application
             _unitOfWork.Commit();
             _emailServer.Send("Registro en AppAC","Se registro en el sistema",docente.Email);
             return new DocenteResponse(response);
-
         }
     }
 
