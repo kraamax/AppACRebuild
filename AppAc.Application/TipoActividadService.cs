@@ -27,7 +27,7 @@ namespace AppAC.Application
         {
             var tipoActividad = _tipoActividadRepository.FindFirstOrDefault(a => a.NombreActividad == request.Nombre);
             if (tipoActividad != null)
-                return new TipoActividadResponse("Ya existe la una actividad llamada así.");
+                return new TipoActividadResponse("Ya existe la una actividad llamada así.",tipoActividad);
             tipoActividad = new TipoActividad(request.Nombre);
             try
             {
@@ -35,12 +35,12 @@ namespace AppAC.Application
             }
             catch (Exception)
             {
-                return new TipoActividadResponse($"No se pudo guardar la actividad {tipoActividad.NombreActividad}");
+                return new TipoActividadResponse($"No se pudo guardar la actividad {tipoActividad.NombreActividad}",tipoActividad);
             }
             _unitOfWork.Commit();
-            return new TipoActividadResponse($"Actividad {tipoActividad.NombreActividad} guardada");
+            return new TipoActividadResponse($"Actividad {tipoActividad.NombreActividad} guardada",tipoActividad);
         }
     }
     public record TipoActividadRequest(string Nombre);
-    public record TipoActividadResponse(string Mensaje);
+    public record TipoActividadResponse(string Mensaje, TipoActividad TipoActividad);
 }

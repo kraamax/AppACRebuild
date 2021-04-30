@@ -9,7 +9,6 @@ namespace AppAC.Domain
         {
             NombreActividad = nombreActividad;
         }
-        public int TipoActividadId { get; set; }
         public string NombreActividad { get; set; }
         
     }

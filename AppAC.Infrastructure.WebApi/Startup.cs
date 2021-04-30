@@ -16,6 +16,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AppAC.Infrastructure.WebApi.Filters;
+using FluentValidation.AspNetCore;
 
 namespace AppAC.Infrastructure.WebApi
 {
@@ -35,6 +37,15 @@ namespace AppAC.Infrastructure.WebApi
             var notificationMetadata =
                 Configuration.GetSection("NotificationMetadata").
                     Get<NotificationMetadata>();
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                //suprime el filtro por defecto q trae asp.net core para enviar los mensajes cuando el modelo no es valido
+                options.SuppressModelStateInvalidFilter = true;
+            });
+            services.AddMvc(
+                //adicciona el filtro para examinar la validacion de la request
+                options =>options.Filters.Add<ValidatorFilter>() 
+                ).AddFluentValidation(configuration =>configuration.RegisterValidatorsFromAssemblyContaining<Startup>());
             services.AddSingleton(notificationMetadata);
             services.AddDbContext<AppACContext>(opt => opt.UseSqlite(connectionString));
             services.AddScoped<IUnitOfWork, UnitOfWork>(); //Crear Instancia por peticion

@@ -13,3 +13,6 @@ C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Infrastructure.Data\obj\Debug
 C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Infrastructure.Data\bin\Debug\net5.0\AppAC.Domain.dll
 C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Infrastructure.Data\bin\Debug\net5.0\AppAC.Domain.pdb
 C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Infrastructure.Data\obj\Debug\net5.0\AppAC.Infrastructure.Data.csproj.CopyComplete
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Infrastructure.Data\bin\Debug\net5.0\AppAC.Infrastructure.Data.runtimeconfig.json
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Infrastructure.Data\bin\Debug\net5.0\AppAC.Infrastructure.Data.runtimeconfig.dev.json
+C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Infrastructure.Data\obj\Debug\net5.0\AppAC.Infrastructure.Data.genruntimeconfig.cache
