@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AppAC.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(AppACContext))]
-    [Migration("20210430131639_initialCreate")]
-    partial class initialCreate
+    [Migration("20210502003246_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -136,9 +136,6 @@ namespace AppAC.Infrastructure.Data.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("TipoActividadId")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
 
                     b.HasAlternateKey("NombreActividad");
@@ -172,9 +169,6 @@ namespace AppAC.Infrastructure.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Sexo")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Telefono")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("UserName")

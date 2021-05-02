@@ -4,13 +4,13 @@ using AppAC.Domain.Contracts;
 
 namespace AppAC.Application
 {
-    public class CrearDocenteService
+    public class CrearJefeDptoService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IDepartamentoRepository _departamentoRepository;
         private readonly IUsuarioRepository _usuarioRepository;
         private readonly IMailServer _emailServer;
-        public CrearDocenteService(
+        public CrearJefeDptoService(
             IUnitOfWork unitOfWork,
             IDepartamentoRepository departamentoRepository,
             IUsuarioRepository usuarioRepository,
@@ -23,11 +23,11 @@ namespace AppAC.Application
             _emailServer = emailServer;
         }
 
-        public DocenteResponse Handle(DocenteRequest request)
+        public JefeDptoResponse Handle(DocenteRequest request)
         {
             var departamento = _departamentoRepository.Find(request.departamentoId);
             if (departamento == null)
-                return new DocenteResponse("Se debe asignar un departamento al docente"); 
+                return new JefeDptoResponse("Se debe asignar un departamento al docente"); 
             var docente = new Docente(request.Identificacion, 
                                         request.Nombres,
                                         request.Apellidos,
@@ -46,11 +46,11 @@ namespace AppAC.Application
             }
             _unitOfWork.Commit();
             _emailServer.Send("Registro en AppAC","Se registro en el sistema",docente.Email);
-            return new DocenteResponse(response);
+            return new JefeDptoResponse(response);
         }
     }
 
-    public record DocenteRequest(string Identificacion, string Nombres, string Apellidos, string Email, string Sexo, int departamentoId);
+    public record JefeDptoRequest(string Identificacion, string Nombres, string Apellidos, string Email, string Sexo, int departamentoId);
 
-    public record DocenteResponse(string Mensaje);
+    public record JefeDptoResponse(string Mensaje);
 }

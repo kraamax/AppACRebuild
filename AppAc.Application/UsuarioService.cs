@@ -47,21 +47,18 @@ namespace AppAC.Application
                                                     nombres,
                                                     apellidos,
                                                     email,
-                                                    telefono,
                                                     sexo,
                                                     departamento);
            if(tipo=="JefeDpto") return new JefeDpto(identificacion,
                                                      nombres,
                                                      apellidos,
                                                      email,
-                                                     telefono,
                                                      sexo,
                                                      departamento);
             return new Administrador(identificacion,
                                         nombres,
                                         apellidos,
                                         email,
-                                        telefono,
                                         sexo);
         }
     }

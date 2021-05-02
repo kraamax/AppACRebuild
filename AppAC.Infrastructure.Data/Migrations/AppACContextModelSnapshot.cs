@@ -131,12 +131,12 @@ namespace AppAC.Infrastructure.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("NombreActividad")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("TipoActividadId")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
+
+                    b.HasAlternateKey("NombreActividad");
 
                     b.ToTable("TiposActividades");
                 });
@@ -167,9 +167,6 @@ namespace AppAC.Infrastructure.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Sexo")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Telefono")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("UserName")

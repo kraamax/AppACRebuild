@@ -11,19 +11,19 @@ namespace AppAC.Domain.Test
         /*
             Como Jefe de Departamento 
             Quiero asignar actividades complementarias a los docentes 
-            Para que este pueda consultar las actividades que debe realizar durante el período académico.
-            Criterios de Aceptación
+            Para que este pueda consultar las actividades que debe realizar durante el perï¿½odo acadï¿½mico.
+            Criterios de Aceptaciï¿½n
             1.	Las horas asignadas a la actividad tienen que ser mayor a 0
             Dada una actividad complementaria "Tutorias", 
             cuando se va asignar a asignar al docente 103423424 Juan Perez, 0 horas
-            el sistema mostrará el mensaje "Las horas asignadas a la actividad tienen que ser mayor a 0"
+            el sistema mostrarï¿½ el mensaje "Las horas asignadas a la actividad tienen que ser mayor a 0"
              
              */
         [Test]
         public void LasHorasAsignadaNoPuedenSerIgualACero()
         {
             var dpto = new Departamento("AB21", "Departamento de Ingenieria de Sistemas");
-            var docente = new Docente("103423424","Juan", "Perez","chevichantoti@gmail.com","65434343","Masculino",dpto);
+            var docente = new Docente("103423424","Juan", "Perez","chevichantoti@gmail.com","Masculino",dpto);
             var tipoActividad = new TipoActividad("Asesoria");
             var actividad = new Actividad(tipoActividad);
             var resultado = actividad.Asignar(docente,0);
@@ -33,19 +33,19 @@ namespace AppAC.Domain.Test
         /*
             Como Jefe de Departamento 
             Quiero asignar actividades complementarias a los docentes 
-            Para que este pueda consultar las actividades que debe realizar durante el período académico.
-            Criterios de Aceptación
+            Para que este pueda consultar las actividades que debe realizar durante el perï¿½odo acadï¿½mico.
+            Criterios de Aceptaciï¿½n
             1.	Las horas asignadas a la actividad tienen que ser mayor a 0
             Dada una actividad complementaria "Tutorias", 
             cuando se va asignar a asignar al docente 103423424 Juan Perez, -1 horas
-            el sistema mostrará el mensaje "Las horas asignadas a la actividad tienen que ser mayor a 0"
+            el sistema mostrarï¿½ el mensaje "Las horas asignadas a la actividad tienen que ser mayor a 0"
              
              */
         [Test]
         public void LasHorasAsignadaNoPuedenSerMenorACero()
         {
             var dpto = new Departamento("AB21", "Departamento de Ingenieria de Sistemas");
-            var docente = new Docente("103423424", "Juan", "Perez", "chevichantoti@gmail.com", "65434343", "Masculino", dpto);
+            var docente = new Docente("103423424", "Juan", "Perez", "chevichantoti@gmail.com", "Masculino", dpto);
             var tipoActividad = new TipoActividad("Asesoria");
             var actividad = new Actividad(tipoActividad);
             var resultado = actividad.Asignar(docente,-1);
@@ -55,19 +55,19 @@ namespace AppAC.Domain.Test
         /*
            Como Jefe de Departamento 
            Quiero asignar actividades complementarias a los docentes 
-           Para que este pueda consultar las actividades que debe realizar durante el período académico.
-           Criterios de Aceptación
+           Para que este pueda consultar las actividades que debe realizar durante el perï¿½odo acadï¿½mico.
+           Criterios de Aceptaciï¿½n
            1.	Las horas asignadas a la actividad tienen que ser mayor a 0
            Dada una actividad complementaria "Tutorias", 
            cuando se va asignar a asignar al docente 103423424 Juan Perez, 5 horas
-           el sistema mostrará el mensaje "Se asignaron 5 al docente Juan";
+           el sistema mostrarï¿½ el mensaje "Se asignaron 5 al docente Juan";
 
             */
         [Test]
         public void LasHorasAsignadaDebenSerMayorACero()
         {
             var dpto = new Departamento("AB21", "Departamento de Ingenieria de Sistemas");
-            var docente = new Docente("103423424", "Juan", "Perez", "chevichantoti@gmail.com", "65434343", "Masculino", dpto);
+            var docente = new Docente("103423424", "Juan", "Perez", "chevichantoti@gmail.com", "Masculino", dpto);
             var tipoActividad = new TipoActividad("Asesoria");
             var actividad = new Actividad(tipoActividad);
             var resultado = actividad.Asignar(docente,5);
@@ -77,19 +77,19 @@ namespace AppAC.Domain.Test
         /*
            Como Jefe de Departamento 
            Quiero asignar actividades complementarias a los docentes 
-           Para que este pueda consultar las actividades que debe realizar durante el período académico.
-           Criterios de Aceptación
+           Para que este pueda consultar las actividades que debe realizar durante el perï¿½odo acadï¿½mico.
+           Criterios de Aceptaciï¿½n
            1.	Las horas asignadas a la actividad tienen que ser no pueden ser mayor a 20
            Dada una actividad complementaria "Tutorias", 
            cuando se va asignar a asignar al docente 103423424 Juan Perez, 25 horas
-           el sistema mostrará el mensaje "Se asignaron 5 al docente Juan";
+           el sistema mostrarï¿½ el mensaje "Se asignaron 5 al docente Juan";
 
             */
         [Test]
         public void LasHorasAsignadasNoPuedenSerMayorAVeinte()
         {
             var dpto = new Departamento("AB21", "Departamento de Ingenieria de Sistemas");
-            var docente = new Docente("103423424", "Juan", "Perez", "chevichantoti@gmail.com", "65434343", "Masculino", dpto);
+            var docente = new Docente("103423424", "Juan", "Perez", "chevichantoti@gmail.com", "Masculino", dpto);
             var tipoActividad = new TipoActividad("Asesoria");
             var actividad = new Actividad(tipoActividad);
             var resultado = actividad.Asignar(docente,25);

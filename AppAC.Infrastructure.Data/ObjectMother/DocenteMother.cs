@@ -18,7 +18,6 @@ namespace AppAC.Infrastructure.Data.ObjectMother
                                 "Sebastian", 
                                 "Onate", 
                                 "sebastianonatetest@gmail.com",
-                                "4444322",
                                 "M",dpto);
         }
     }

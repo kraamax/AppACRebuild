@@ -13,7 +13,7 @@ namespace AppAC.Application.Test
     public class AgregarDocenteTest
     {
         private AppACContext _dbContext;
-        private DocenteService _docenteService;
+        private CrearDocenteService _crearDocenteService;
         private DepartamentoRepository _departamentoRepository;
         [SetUp]
         public void Setup()
@@ -28,7 +28,7 @@ namespace AppAC.Application.Test
             _dbContext.Database.EnsureCreated();
             _departamentoRepository = new DepartamentoRepository(_dbContext);
 
-            _docenteService = new DocenteService(
+            _crearDocenteService = new CrearDocenteService(
                 new UnitOfWork(_dbContext),
                 _departamentoRepository,
                 new UsuarioRepository(_dbContext),
@@ -47,11 +47,10 @@ namespace AppAC.Application.Test
                 docente.Nombres,
                 docente.Apellidos,
                 docente.Email,
-                docente.Telefono,
                 docente.Sexo,
                 docente.Departamento.Id
                 );
-            var response = _docenteService.Handle(request).Mensaje;
+            var response = _crearDocenteService.Handle(request).Mensaje;
             Assert.AreEqual("Se registró correctamente el docente Sebastian", response);
         }
         [Test]
@@ -65,11 +64,10 @@ namespace AppAC.Application.Test
                 docente.Nombres,
                 docente.Apellidos,
                 docente.Email,
-                docente.Telefono,
                 docente.Sexo,
                 2
             );
-            var response = _docenteService.Handle(request).Mensaje;
+            var response = _crearDocenteService.Handle(request).Mensaje;
             Assert.AreEqual("Se debe asignar un departamento al docente", response);
         }
     }
