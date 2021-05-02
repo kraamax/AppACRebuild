@@ -24,7 +24,14 @@ namespace AppAC.Application
             _emailServer = emailServer;
         }
         public DepartamentoResponse CrearDepartamento(DepartamentoRequest request) {
-            var departamento = new Departamento(request.Codigo,request.Nombre);
+            var departamento = new Departamento();
+            var errors=departamento.CanDeliver(request.Codigo, request.Nombre);
+            if (errors.Any())
+            {
+                var result = String.Join(",", errors);
+                return new DepartamentoResponse(result);
+            }
+            departamento.Deliver(request.Codigo, request.Nombre);
             try
             {
                 _departamentoRepository.Add(departamento);

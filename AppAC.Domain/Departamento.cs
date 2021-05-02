@@ -13,6 +13,11 @@ namespace AppAC.Domain
             CodigoDpto = codigoDpto;
             NombreDpto = nombreDpto;
         }
+
+        public Departamento()
+        {
+            
+        }
         public string CodigoDpto { get; set; }
         public string NombreDpto { get; set; }
         public IReadOnlyList<string> CanDeliver(string codigoDpto, string nombreDpto) {
