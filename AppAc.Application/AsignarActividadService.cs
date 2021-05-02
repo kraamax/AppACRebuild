@@ -17,7 +17,7 @@ namespace AppAc.Application
            IActividadRepository actividadRepository,
            IUsuarioRepository usuarioRepository,
            ITipoActividadRepository tipoActividadRepository,
-        IMailServer emailServer
+           IMailServer emailServer
        )
         {
             _unitOfWork = unitOfWork;
@@ -26,7 +26,7 @@ namespace AppAc.Application
             _tipoActividadRepository = tipoActividadRepository;
             _emailServer = emailServer;
         }
-        public ActividadResponse AsignarActividad(ActividadRequest request)
+        public ActividadResponse Handle(ActividadRequest request)
         {
             var tipoActividad = _tipoActividadRepository.Find(request.TipoActividadId);
             var docente =(Docente)_usuarioRepository.FindFirstOrDefault(d=>d.Identificacion.Equals(request.IdentificaciónDocente));
@@ -34,7 +34,7 @@ namespace AppAc.Application
             var response = actividad.Asignar(docente, request.horasAsignadas);
             _actividadRepository.Add(actividad);
             _unitOfWork.Commit();
-            _emailServer.Send("Nueva actividad asignada",$"Se efectúo la asignacion del a la actividad", docente.Email);
+            _emailServer.Send("Nueva actividad asignada",$"Se efectúo la asignacion de la actividad", docente.Email);
             return new ActividadResponse(response);
         }
     }

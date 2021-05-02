@@ -22,8 +22,7 @@ namespace AppAC.Infrastructure.Data
         public DbSet<Actividad> Actividades { get; set; }
         public DbSet<PlanAccion> Planes { get; set; }
         public DbSet<ItemPlan> ItemsPlanes { get; set; }
-
-
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<PlazoApertura>().HasKey(c => c.Id);
@@ -41,8 +40,10 @@ namespace AppAC.Infrastructure.Data
             modelBuilder.Entity<ItemPlan>().OwnsOne(p => p.AccionPlaneada);
             modelBuilder.Entity<ItemPlan>().OwnsOne(p => p.AccionRealizada, a=>a.OwnsOne(c=>c.Evidencia));
 
+            modelBuilder.Entity<Departamento>().HasData(
+                new Departamento("ss232", "Matematicas y Fisica") { Id=1}
+            );
         }
-
     }
 }
 

@@ -50,7 +50,7 @@ namespace AppAC.Application.Test
             _tipoActividadRepository.Add(tipo);
             _dbContext.SaveChanges();
             var request = new ActividadRequest(1, "103523423", 10);
-            var response = _asignarActividadService.AsignarActividad(request);
+            var response = _asignarActividadService.Handle(request);
             response.Message.Should().Be("Se asignaron 10 al docente Sebastian");
         }
     }

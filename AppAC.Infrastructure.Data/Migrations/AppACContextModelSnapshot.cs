@@ -61,6 +61,14 @@ namespace AppAC.Infrastructure.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Departamentos");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CodigoDpto = "ss232",
+                            NombreDpto = "Matematicas y Fisica"
+                        });
                 });
 
             modelBuilder.Entity("AppAC.Domain.ItemPlan", b =>

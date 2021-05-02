@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AppAC.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(AppACContext))]
-    [Migration("20210502034415_InitialCreate")]
+    [Migration("20210502073309_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -63,6 +63,14 @@ namespace AppAC.Infrastructure.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Departamentos");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CodigoDpto = "ss232",
+                            NombreDpto = "Matematicas y Fisica"
+                        });
                 });
 
             modelBuilder.Entity("AppAC.Domain.ItemPlan", b =>

@@ -155,6 +155,11 @@ namespace AppAC.Infrastructure.Data.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Departamentos",
+                columns: new[] { "Id", "CodigoDpto", "NombreDpto" },
+                values: new object[] { 1, "ss232", "Matematicas y Fisica" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Actividades_DocenteId",
                 table: "Actividades",

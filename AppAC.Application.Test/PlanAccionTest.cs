@@ -49,16 +49,9 @@ namespace AppAC.Application.Test
             var actividad = ActividadMother.CreateActividad();
             _actividadRepository.Add(actividad);
             _dbContext.SaveChanges();
-            var planItem = new ItemPlan();
-            var evidencia = new Evidencia();
-            evidencia.Deliver("loquesea/dir");
-            var accionPlaneada = new AccionPlaneada();
-            accionPlaneada.Deliver("Se describe aqui");
-            var accionRealizada = new AccionRealizada();
-            accionRealizada.Deliver("Se describe lo que se hizo",evidencia);
-            planItem.Deliver(accionPlaneada, accionRealizada);
-            var items = new List<ItemPlan>();
-            items.Add(planItem);
+            var item = new ItemPlanRequest(0,"Se describe aqui","Se describe lo que se hizo","loquesea/dir");
+            var items = new List<ItemPlanRequest>();
+            items.Add(item);
             var request = new PlanAccionRequest(1,items);
             var response = _crearPlanAccionService.Handle(request);
             response.Message.Should().Be("Plan de accion registrado correctamente");
@@ -68,16 +61,9 @@ namespace AppAC.Application.Test
         public void NoPuedoCrearPlanDeAccionSiNoExisteUnaActividad()
         {
             
-            var planItem = new ItemPlan();
-            var evidencia = new Evidencia();
-            evidencia.Deliver("loquesea/dir");
-            var accionPlaneada = new AccionPlaneada();
-            accionPlaneada.Deliver("Se describe aqui");
-            var accionRealizada = new AccionRealizada();
-            accionRealizada.Deliver("Se describe lo que se hizo",evidencia);
-            planItem.CanDeliver(accionPlaneada, accionRealizada);
-            var items = new List<ItemPlan>();
-            items.Add(planItem);
+            var item = new ItemPlanRequest(0,"Se describe aqui","Se describe lo que se hizo","loquesea/dir");
+            var items = new List<ItemPlanRequest>();
+            items.Add(item);
             var request = new PlanAccionRequest(2,items);
             var response = _crearPlanAccionService.Handle(request);
             response.Message.Should().Be("Debe tener una actividad asignada para crear una plan de acciones");
