@@ -6,6 +6,6 @@ namespace AppAC.Domain
 {
     public abstract class Accion
     {
-        public string Descripcion { get; set; }
+        public string Descripcion { get; protected set; }
     }
 }

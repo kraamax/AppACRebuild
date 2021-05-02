@@ -7,15 +7,15 @@ namespace AppAC.Domain
 {
     public class JefeDpto : Usuario
     {
-        public JefeDpto(string identificacion, string nombres, string apellidos, string email, string sexo) : base(identificacion, nombres, apellidos, email, sexo)
-        {
-        }
-
         public JefeDpto(string identificacion, string nombres, string apellidos, string email, string sexo, Departamento departamento) : base(identificacion, nombres, apellidos, email, sexo)
         {
             Departamento = departamento;
         }
 
+        public JefeDpto()
+        {
+            
+        }
         public Departamento Departamento { get; set; }
         public IReadOnlyList<string> CanDeliver(string identificacion, string nombres, string apellidos, string email, string sexo, Departamento departamento) {
             var errors = new List<string>();

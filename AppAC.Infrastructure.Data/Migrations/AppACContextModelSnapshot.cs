@@ -69,13 +69,7 @@ namespace AppAC.Infrastructure.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("IdItem")
-                        .HasColumnType("INTEGER");
-
                     b.Property<int?>("PlanAccionId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("PlanAccionesId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
@@ -91,7 +85,7 @@ namespace AppAC.Infrastructure.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("ActividadId")
+                    b.Property<int?>("ActividadId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Fecha")
@@ -292,11 +286,9 @@ namespace AppAC.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("AppAC.Domain.PlanAccion", b =>
                 {
-                    b.HasOne("AppAC.Domain.TipoActividad", "Actividad")
+                    b.HasOne("AppAC.Domain.Actividad", "Actividad")
                         .WithMany()
-                        .HasForeignKey("ActividadId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ActividadId");
 
                     b.Navigation("Actividad");
                 });

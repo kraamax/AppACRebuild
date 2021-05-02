@@ -85,26 +85,6 @@ namespace AppAC.Infrastructure.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Planes",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Fecha = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    ActividadId = table.Column<int>(type: "INTEGER", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Planes", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Planes_TiposActividades_ActividadId",
-                        column: x => x.ActividadId,
-                        principalTable: "TiposActividades",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Actividades",
                 columns: table => new
                 {
@@ -134,13 +114,31 @@ namespace AppAC.Infrastructure.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Planes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Fecha = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    ActividadId = table.Column<int>(type: "INTEGER", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Planes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Planes_Actividades_ActividadId",
+                        column: x => x.ActividadId,
+                        principalTable: "Actividades",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ItemsPlanes",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false),
-                    IdItem = table.Column<int>(type: "INTEGER", nullable: false),
                     AccionPlaneada_Descripcion = table.Column<string>(type: "TEXT", nullable: true),
-                    PlanAccionesId = table.Column<int>(type: "INTEGER", nullable: false),
                     AccionRealizada_Evidencia_Ruta = table.Column<string>(type: "TEXT", nullable: true),
                     AccionRealizada_Evidencia_FechaCarga = table.Column<DateTime>(type: "TEXT", nullable: true),
                     AccionRealizada_Descripcion = table.Column<string>(type: "TEXT", nullable: true),
@@ -191,25 +189,25 @@ namespace AppAC.Infrastructure.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Actividades");
-
-            migrationBuilder.DropTable(
                 name: "ItemsPlanes");
 
             migrationBuilder.DropTable(
                 name: "PlazosApertura");
 
             migrationBuilder.DropTable(
-                name: "Usuarios");
-
-            migrationBuilder.DropTable(
                 name: "Planes");
 
             migrationBuilder.DropTable(
-                name: "Departamentos");
+                name: "Actividades");
 
             migrationBuilder.DropTable(
                 name: "TiposActividades");
+
+            migrationBuilder.DropTable(
+                name: "Usuarios");
+
+            migrationBuilder.DropTable(
+                name: "Departamentos");
         }
     }
 }
