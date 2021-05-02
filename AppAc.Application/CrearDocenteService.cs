@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using AppAC.Domain;
 using AppAC.Domain.Contracts;
 
@@ -27,13 +28,25 @@ namespace AppAC.Application
         {
             var departamento = _departamentoRepository.Find(request.departamentoId);
             if (departamento == null)
-                return new DocenteResponse("Se debe asignar un departamento al docente"); 
-            var docente = new Docente(request.Identificacion, 
-                                        request.Nombres,
-                                        request.Apellidos,
-                                        request.Email,
-                                        request.Sexo,
-                                        departamento);
+                return new DocenteResponse("Se debe asignar un departamento al docente");
+            var docente = new Docente();
+            var errors = docente.CanDeliver(request.Identificacion,
+                request.Nombres,
+                request.Apellidos,
+                request.Email,
+                request.Sexo,
+                departamento);
+            if (errors.Any())
+            {
+                var result = String.Join(", ", errors.ToArray());
+                return new DocenteResponse(result);
+            }
+            docente.Deliver(request.Identificacion,
+                request.Nombres,
+                request.Apellidos,
+                request.Email,
+                request.Sexo,
+                departamento);
             string response = "";
             try
             {

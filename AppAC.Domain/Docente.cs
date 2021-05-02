@@ -16,6 +16,9 @@ namespace AppAC.Domain
             Departamento = departamento;
         }
 
+        public Docente()
+        {
+        }
         public Departamento Departamento { get; set; }
         
         public IReadOnlyList<string> CanDeliver(string identificacion, string nombres, string apellidos, string email, string sexo, Departamento departamento) {

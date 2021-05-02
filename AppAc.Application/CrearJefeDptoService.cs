@@ -23,7 +23,7 @@ namespace AppAC.Application
             _emailServer = emailServer;
         }
 
-        public JefeDptoResponse Handle(DocenteRequest request)
+        public JefeDptoResponse Handle(JefeDptoRequest request)
         {
             var departamento = _departamentoRepository.Find(request.departamentoId);
             if (departamento == null)

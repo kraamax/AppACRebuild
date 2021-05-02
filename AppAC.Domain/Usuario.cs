@@ -7,6 +7,10 @@ namespace AppAC.Domain
 {
     public class Usuario: Entity<int>, IAggregateRoot
     {
+        public Usuario()
+        {
+            
+        }
         public Usuario(string identificacion, string nombres, string apellidos, string email, string sexo)
         {
             Identificacion = identificacion;

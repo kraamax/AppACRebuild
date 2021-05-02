@@ -16,7 +16,7 @@ namespace AppAC.Infrastructure.Data.ObjectMother
             var dpto = DepartamentoMother.CreateDepartamento("ss001");
              return new Docente(identificacion, 
                                 "Sebastian", 
-                                "Onate", 
+                                "Onate Escobar", 
                                 "sebastianonatetest@gmail.com",
                                 "M",dpto);
         }
