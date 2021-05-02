@@ -9,5 +9,7 @@ namespace AppAC.Domain.Contracts
 {
     public interface IPlanAccionRepository : IGenericRepository<PlanAccion>
     {
+        PlanAccion FindByActividad(int actividadId);
+        PlanAccion Find(int id);
     }
 }

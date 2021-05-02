@@ -22,7 +22,6 @@ namespace AppAC.Infrastructure.Data
         public DbSet<Actividad> Actividades { get; set; }
         public DbSet<PlanAccion> Planes { get; set; }
         public DbSet<ItemPlan> ItemsPlanes { get; set; }
-        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<PlazoApertura>().HasKey(c => c.Id);

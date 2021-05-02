@@ -65,7 +65,7 @@ namespace AppAC.Application.Test
                 docente.Apellidos,
                 docente.Email,
                 docente.Sexo,
-                2
+                3
             );
             var response = _crearDocenteService.Handle(request).Mensaje;
             Assert.AreEqual("Se debe asignar un departamento al docente", response);

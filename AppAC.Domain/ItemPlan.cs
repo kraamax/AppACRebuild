@@ -10,6 +10,7 @@ namespace AppAC.Domain
     {
         public AccionPlaneada AccionPlaneada { get; private set; }
         public AccionRealizada AccionRealizada { get; private set; }
+        public int PlanAccionId { get; private set; }
         public IReadOnlyList<string> CanDeliver(AccionPlaneada accionPlaneada, AccionRealizada accionRealizada) {
                     var errors = new List<string>();
                     if (accionPlaneada==null)
@@ -19,12 +20,13 @@ namespace AppAC.Domain
                         errors.Add("Debe tener una accion realizada");
                     return errors;
         }
-        public void Deliver(AccionPlaneada accionPlaneada, AccionRealizada accionRealizada)
+        public void Deliver(AccionPlaneada accionPlaneada, AccionRealizada accionRealizada, int planAccionId)
         {
             if (CanDeliver(accionPlaneada, accionRealizada).Any())
                 throw new InvalidOperationException();
             AccionPlaneada = accionPlaneada;
             AccionRealizada = accionRealizada;
+            PlanAccionId = planAccionId;
         }
     }
 }

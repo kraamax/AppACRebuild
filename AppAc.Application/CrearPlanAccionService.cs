@@ -28,16 +28,21 @@ namespace AppAc.Application
         }
         public PlanAccionResponse Handle(PlanAccionRequest request)
         {
+            var planAccion = _planAccionRepository.FindByActividad(request.ActividadId);
+            if (planAccion != null)
+                return new PlanAccionResponse("Ya existe un plan de acción para esta actividad");
+            
             var actividad = _actividadRepository.Find(request.ActividadId);
             if (actividad == null)
                 return new PlanAccionResponse("Debe tener una actividad asignada para crear una plan de acciones");
-            var planAccion = new PlanAccion();
-            var errors = CanConvertToItemPlan(request.Items);
+            
+            planAccion = new PlanAccion();
+            var errors = canConvertToItemPlanList(request.Items);
             if (errors.Any())
             {
                 return new PlanAccionResponse(convertToString(errors));
             }
-            var items = ConvertToItemPlan(request.Items);
+            var items = ConvertToItemPlanList(request.Items);
             errors.AddRange(planAccion.CanDeliver(items,actividad));
             if (errors.Any())
             {
@@ -60,40 +65,28 @@ namespace AppAc.Application
             _emailServer.Send("Nueva plan registrado",$"Se registro el plan de acciones", actividad.Docente.Email);
             return new PlanAccionResponse(response);
         }
-        private List<string> CanConvertToItemPlan(List<ItemPlanRequest> items)
+        
+        private List<string> canConvertToItemPlanList(List<ItemPlanRequest> items)
         {
             var errors = new List<string>();
             foreach (var item in items)
             {
-                var itemPlan = new ItemPlan();
-                var accionPlaneada = new AccionPlaneada();
-                errors.AddRange(accionPlaneada.CanDeliver(item.AccionPlaneada_Descripcion));
-                var accionRealizada = new AccionRealizada();
-                var evidencia = new Evidencia();
-                errors.AddRange(evidencia.CanDeliver(item.AccionRealizada_evidencia_Ruta));
-                accionRealizada.CanDeliver(item.AccionRealizada_Descripcion,evidencia);
-                errors.AddRange(itemPlan.CanDeliver(accionPlaneada,accionRealizada));
+                errors.AddRange(ItemPlanUtils.CanConvertToItemPlan(item));
             }
             return errors;
         }
 
-        private List<ItemPlan> ConvertToItemPlan(List<ItemPlanRequest> items)
+        private List<ItemPlan> ConvertToItemPlanList(List<ItemPlanRequest> items)
         {
             var itemsPlan = new List<ItemPlan>();
             foreach (var item in items)
             {
-                var itemPlan = new ItemPlan();
-                var accionPlaneada = new AccionPlaneada();
-                accionPlaneada.Deliver(item.AccionPlaneada_Descripcion);
-                var accionRealizada = new AccionRealizada();
-                var evidencia = new Evidencia();
-                evidencia.Deliver(item.AccionRealizada_evidencia_Ruta);
-                accionRealizada.Deliver(item.AccionRealizada_Descripcion,evidencia);
-                itemPlan.Deliver(accionPlaneada,accionRealizada);
+                var itemPlan=ItemPlanUtils.ConvertToItemPlan(item);
                 itemsPlan.Add(itemPlan);
             }
             return itemsPlan;
         }
+        
         private string convertToString(List<string> errors)
         {
             var result = String.Join(", ", errors.ToArray());

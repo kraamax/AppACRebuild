@@ -40,5 +40,12 @@ namespace AppAC.Infrastructure.WebApi.Controllers
             var response = service.Handle(request);
             return Ok(response);
         }
+        [HttpGet]
+        public IActionResult ConsultarPlanAccion(int id)
+        {
+            var service = new ConsultarPlanAccionService(_planAccionRepository);
+            var response = service.Handle(id);
+            return Ok(response);
+        }
     }
 }

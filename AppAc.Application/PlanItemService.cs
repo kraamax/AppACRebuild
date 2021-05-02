@@ -10,54 +10,51 @@ namespace AppAc.Application
     public class ItemPlanService
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IActividadRepository _actividadRepository;
         private readonly IPlanAccionRepository _planAccionRepository;
-        private readonly IMailServer _emailServer;
+        private readonly IItemPlanRepository _itemPlanRepository;
 
         public ItemPlanService(
            IUnitOfWork unitOfWork,
-           IActividadRepository actividadRepository,
            IPlanAccionRepository planAccionRepository,
-           IMailServer emailServer
+           IItemPlanRepository itemPlanRepository
        )
         {
             _unitOfWork = unitOfWork;
-            _actividadRepository = actividadRepository;
+            _itemPlanRepository = itemPlanRepository;
             _planAccionRepository = planAccionRepository;
-            _emailServer = emailServer;
         }
-        public PlanAccionResponse Handle(PlanAccionRequest request)
+        public ItemPlanResponse RegistrarItem(ItemPlanRequest request)
         {
-            var actividad = _actividadRepository.Find(request.ActividadId);
-            if (actividad == null)
-                return new PlanAccionResponse("Debe tener una actividad asignada para crear una plan de acciones");
-            var planAccion = new PlanAccion();
-            /*var errors = planAccion.CanDeliver(request.Items,actividad);
+            var planAccion = _planAccionRepository.Find(request.PlanId);
+            if (planAccion == null)
+                return new ItemPlanResponse("No se encontró el plan de acción");
+            var errors = ItemPlanUtils.CanConvertToItemPlan(request);
             if (errors.Any())
             {
                 var result = String.Join(", ", errors.ToArray());
-                return new PlanAccionResponse(result);
+                return new ItemPlanResponse(result);
             }
-            planAccion.Deliver(request.Items,actividad);*/
+            var item = ItemPlanUtils.ConvertToItemPlan(request);
             var response = "";
             try
             {
-                _planAccionRepository.Add(planAccion);
-                response = "Plan de accion registrado correctamente";
+                _itemPlanRepository.Add(item);
+                response = "Item registrado correctamente";
             }
             catch (Exception e)
             {
                 response = "No se pudo registrar";
             }
             _unitOfWork.Commit();
-            if (actividad.Docente == null)
-                return new PlanAccionResponse("No trajo docente");
-            _emailServer.Send("Nueva plan registrado",$"Se registro el plan de acciones", actividad.Docente.Email);
-            return new PlanAccionResponse(response);
+            return new ItemPlanResponse(response);
         }
 
-        
+       
+
     }
     public record ItemPlanRequest(int PlanId, string AccionPlaneada_Descripcion,string AccionRealizada_Descripcion, string AccionRealizada_evidencia_Ruta);
     public record ItemPlanResponse(string Message);
+
+   
+    
 }
