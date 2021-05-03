@@ -49,7 +49,16 @@ namespace AppAc.Application
             return new ItemPlanResponse(response);
         }
 
-       
+        public ItemPlanResponse EliminarItem(int id)
+        {
+            var item = _itemPlanRepository.Find(id);
+            if (item == null)
+                return new ItemPlanResponse("No se encontró el item");
+            
+            _itemPlanRepository.Delete(item);
+            _unitOfWork.Commit();
+            return new ItemPlanResponse("Se elimino el item");
+        }
 
     }
     public record ItemPlanRequest(int PlanId, string AccionPlaneada_Descripcion,string AccionRealizada_Descripcion, string AccionRealizada_evidencia_Ruta);

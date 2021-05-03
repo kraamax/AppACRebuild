@@ -28,7 +28,7 @@ namespace AppAC.Application.Test
            .Options;
 
             _dbContext = new AppACContext(optionsSqlite);
-            //_dbContext.Database.EnsureDeleted();
+            _dbContext.Database.EnsureDeleted();
             _dbContext.Database.EnsureCreated();
             _planAccionRepository = new PlanAccionRepository(_dbContext);
             _itemPlanRepository = new ItemPlanRepository(_dbContext);
@@ -50,7 +50,17 @@ namespace AppAC.Application.Test
             var response = _itemPlanService.RegistrarItem(request);
             response.Message.Should().Be("Item registrado correctamente");
         }
-        
-       
+        [Test]
+        public void PuedoEliminarItemPlan()
+        {
+            var plan=PlanAccionMother.CreatePlanAccion();
+            _planAccionRepository.Add(plan);
+            _dbContext.SaveChanges();
+            var request = new ItemPlanRequest(1,"Se describe aqui","Se describe lo que se hizo","loquesea/dir");
+            _itemPlanService.RegistrarItem(request);
+            var response = _itemPlanService.EliminarItem(1);
+            response.Message.Should().Be("Se elimino el item");
+        }
+
     }
 }

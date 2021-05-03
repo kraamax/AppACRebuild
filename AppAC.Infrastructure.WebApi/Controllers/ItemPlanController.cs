@@ -37,5 +37,12 @@ namespace AppAC.Infrastructure.WebApi.Controllers
             var response = service.RegistrarItem(request);
             return Ok(response);
         }
+        [HttpDelete]
+        public IActionResult EliminarItemPlan(int id)
+        {
+            var service = new ItemPlanService(_unitOfWork, _planAccionRepository, _itemPlanRepository);
+            var response = service.EliminarItem(id);
+            return Ok(response);
+        }
     }
 }
