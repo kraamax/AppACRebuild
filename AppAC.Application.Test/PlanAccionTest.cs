@@ -68,5 +68,19 @@ namespace AppAC.Application.Test
             var response = _crearPlanAccionService.Handle(request);
             response.Message.Should().Be("Debe tener una actividad asignada para crear una plan de acciones");
         }
+        [Test]
+        public void NoPuedoCrearMasDeUnPlanPorActividad()
+        {
+            var actividad = ActividadMother.CreateActividad();
+            _actividadRepository.Add(actividad);
+            _dbContext.SaveChanges();
+            var item = new ItemPlanRequest(0,"Se describe aqui","Se describe lo que se hizo","loquesea/dir");
+            var items = new List<ItemPlanRequest>();
+            items.Add(item);
+            var request = new PlanAccionRequest(1,items);
+            _crearPlanAccionService.Handle(request);
+            var response = _crearPlanAccionService.Handle(request);
+            response.Message.Should().Be("Ya existe un plan de acción para esta actividad");
+        }
     }
 }
