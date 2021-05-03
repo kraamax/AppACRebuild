@@ -40,13 +40,13 @@ namespace AppAc.Application
             var errors = canConvertToItemPlanList(request.Items);
             if (errors.Any())
             {
-                return new PlanAccionResponse(convertToString(errors));
+                return new PlanAccionResponse(StringUtils.ToString(errors));
             }
             var items = ConvertToItemPlanList(request.Items);
             errors.AddRange(planAccion.CanDeliver(items,actividad));
             if (errors.Any())
             {
-                return new PlanAccionResponse(convertToString(errors));
+                return new PlanAccionResponse(StringUtils.ToString(errors));
             }
             planAccion.Deliver(items,actividad);
             var response = "";
@@ -87,11 +87,7 @@ namespace AppAc.Application
             return itemsPlan;
         }
         
-        private string convertToString(List<string> errors)
-        {
-            var result = String.Join(", ", errors.ToArray());
-            return result;
-        }
+   
         
     }
     public record PlanAccionRequest(int ActividadId, List<ItemPlanRequest> Items);

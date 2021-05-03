@@ -60,6 +60,31 @@ namespace AppAc.Application
             return new ItemPlanResponse("Se elimino el item");
         }
 
+        public ItemPlanResponse ModificarItem(int id, ItemPlanRequest request)
+        {
+            var item = _itemPlanRepository.Find(id);
+            var errors = new List<string>();
+            errors.AddRange(ItemPlanUtils.CanConvertToItemPlan(request));
+            if (errors.Any())
+                return new ItemPlanResponse(StringUtils.ToString(errors));
+            var auxItem = ItemPlanUtils.ConvertToItemPlan(request);
+            errors.AddRange(item.CanDeliver(auxItem.AccionPlaneada, auxItem.AccionRealizada));
+            if (errors.Any())
+                return new ItemPlanResponse(StringUtils.ToString(errors));
+            item.Deliver(auxItem.AccionPlaneada,auxItem.AccionRealizada,auxItem.PlanAccionId);
+            var response = "";
+            try
+            {
+                _itemPlanRepository.Update(item);
+                response = "Se actualizó el item correctamente";
+            }
+            catch (Exception e)
+            {
+                response = "No se pudo actualizar";
+            }
+            _unitOfWork.Commit();
+            return new ItemPlanResponse(response);
+        }
     }
     public record ItemPlanRequest(int PlanId, string AccionPlaneada_Descripcion,string AccionRealizada_Descripcion, string AccionRealizada_evidencia_Ruta);
     public record ItemPlanResponse(string Message);
