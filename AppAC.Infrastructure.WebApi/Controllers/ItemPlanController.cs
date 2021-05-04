@@ -44,5 +44,12 @@ namespace AppAC.Infrastructure.WebApi.Controllers
             var response = service.EliminarItem(id);
             return Ok(response);
         }
+        [HttpPut]
+        public IActionResult ModificarItemPlan(ItemPlanUpdateRequest request)
+        {
+            var service = new ItemPlanService(_unitOfWork, _planAccionRepository, _itemPlanRepository);
+            var response = service.ModificarItem(request);
+            return Ok(response);
+        }
     }
 }

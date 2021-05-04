@@ -4,11 +4,11 @@ using FluentValidation;
 
 namespace AppAC.Infrastructure.WebApi.Validators
 {
-    public class ItemPlanRequestValidator:AbstractValidator<ItemPlanRequest>
+    public class ItemPlanRequestUpdateValidator:AbstractValidator<ItemPlanUpdateRequest>
     {
-        public ItemPlanRequestValidator()
+        public ItemPlanRequestUpdateValidator()
         {
-            RuleFor(x=>x.PlanId)
+            RuleFor(x=>x.Id)
                 .NotEmpty();
             RuleFor(x=>x.AccionPlaneada_Descripcion)
                 .NotEmpty();

@@ -30,23 +30,23 @@ namespace AppAc.Application
         {
             var planAccion = _planAccionRepository.FindByActividad(request.ActividadId);
             if (planAccion != null)
-                return new PlanAccionResponse("Ya existe un plan de acción para esta actividad");
+                return new PlanAccionResponse("Ya existe un plan de acción para esta actividad",planAccion);
             
             var actividad = _actividadRepository.Find(request.ActividadId);
             if (actividad == null)
-                return new PlanAccionResponse("Debe tener una actividad asignada para crear una plan de acciones");
+                return new PlanAccionResponse("Debe tener una actividad asignada para crear una plan de acciones",planAccion);
             
             planAccion = new PlanAccion();
             var errors = canConvertToItemPlanList(request.Items);
             if (errors.Any())
             {
-                return new PlanAccionResponse(StringUtils.ToString(errors));
+                return new PlanAccionResponse(StringUtils.ToString(errors),planAccion);
             }
             var items = ConvertToItemPlanList(request.Items);
             errors.AddRange(planAccion.CanDeliver(items,actividad));
             if (errors.Any())
             {
-                return new PlanAccionResponse(StringUtils.ToString(errors));
+                return new PlanAccionResponse(StringUtils.ToString(errors),planAccion);
             }
             planAccion.Deliver(items,actividad);
             var response = "";
@@ -61,9 +61,9 @@ namespace AppAc.Application
             }
             _unitOfWork.Commit();
             if (actividad.Docente == null)
-                return new PlanAccionResponse("No trajo docente");
+                return new PlanAccionResponse("No trajo docente",planAccion);
             _emailServer.Send("Nueva plan registrado",$"Se registro el plan de acciones", actividad.Docente.Email);
-            return new PlanAccionResponse(response);
+            return new PlanAccionResponse(response,planAccion);
         }
         
         private List<string> canConvertToItemPlanList(List<ItemPlanRequest> items)
@@ -91,5 +91,5 @@ namespace AppAc.Application
         
     }
     public record PlanAccionRequest(int ActividadId, List<ItemPlanRequest> Items);
-    public record PlanAccionResponse(string Message);
+    public record PlanAccionResponse(string Message, PlanAccion PlanAccion);
 }

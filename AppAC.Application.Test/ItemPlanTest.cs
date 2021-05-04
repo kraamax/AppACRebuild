@@ -79,8 +79,8 @@ namespace AppAC.Application.Test
             var plan=PlanAccionMother.CreatePlanAccion();
             _planAccionRepository.Add(plan);
             _dbContext.SaveChanges();
-            var request = new ItemPlanRequest(1,"Se describe aqui dsadasdad","Se describe lo que se hizo","loquesea/dir");
-            var response = _itemPlanService.ModificarItem(1,request);
+            var request = new ItemPlanUpdateRequest(1,"Se describe aqui dsadasdad","Se describe lo que se hizo","loquesea/dir");
+            var response = _itemPlanService.ModificarItem(request);
             response.Message.Should().Be("Se actualizó el item correctamente");
         }
     }

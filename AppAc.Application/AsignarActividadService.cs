@@ -35,9 +35,9 @@ namespace AppAc.Application
             _actividadRepository.Add(actividad);
             _unitOfWork.Commit();
             _emailServer.Send("Nueva actividad asignada",$"Se efectúo la asignacion de la actividad", docente.Email);
-            return new ActividadResponse(response);
+            return new ActividadResponse(response, actividad);
         }
     }
     public record ActividadRequest(int TipoActividadId,string IdentificaciónDocente, int horasAsignadas);
-    public record ActividadResponse(string Message);
+    public record ActividadResponse(string Message, Actividad Actividad);
 }

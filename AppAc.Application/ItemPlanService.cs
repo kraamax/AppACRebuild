@@ -27,12 +27,12 @@ namespace AppAc.Application
         {
             var planAccion = _planAccionRepository.Find(request.PlanId);
             if (planAccion == null)
-                return new ItemPlanResponse("No se encontró el plan de acción");
+                return new ItemPlanResponse("No se encontró el plan de acción",null);
             var errors = ItemPlanUtils.CanConvertToItemPlan(request);
             if (errors.Any())
             {
                 var result = String.Join(", ", errors.ToArray());
-                return new ItemPlanResponse(result);
+                return new ItemPlanResponse(result, null);
             }
             var item = ItemPlanUtils.ConvertToItemPlan(request);
             var response = "";
@@ -46,32 +46,32 @@ namespace AppAc.Application
                 response = "No se pudo registrar";
             }
             _unitOfWork.Commit();
-            return new ItemPlanResponse(response);
+            return new ItemPlanResponse(response,item);
         }
 
         public ItemPlanResponse EliminarItem(int id)
         {
             var item = _itemPlanRepository.Find(id);
             if (item == null)
-                return new ItemPlanResponse("No se encontró el item");
+                return new ItemPlanResponse("No se encontró el item",item);
             
             _itemPlanRepository.Delete(item);
             _unitOfWork.Commit();
-            return new ItemPlanResponse("Se elimino el item");
+            return new ItemPlanResponse("Se elimino el item",item);
         }
 
-        public ItemPlanResponse ModificarItem(int id, ItemPlanRequest request)
+        public ItemPlanResponse ModificarItem(ItemPlanUpdateRequest request)
         {
-            var item = _itemPlanRepository.Find(id);
+            var item = _itemPlanRepository.Find(request.Id);
             var errors = new List<string>();
             errors.AddRange(ItemPlanUtils.CanConvertToItemPlan(request));
             if (errors.Any())
-                return new ItemPlanResponse(StringUtils.ToString(errors));
+                return new ItemPlanResponse(StringUtils.ToString(errors), item);
             var auxItem = ItemPlanUtils.ConvertToItemPlan(request);
             errors.AddRange(item.CanDeliver(auxItem.AccionPlaneada, auxItem.AccionRealizada));
             if (errors.Any())
-                return new ItemPlanResponse(StringUtils.ToString(errors));
-            item.Deliver(auxItem.AccionPlaneada,auxItem.AccionRealizada,auxItem.PlanAccionId);
+                return new ItemPlanResponse(StringUtils.ToString(errors), item);
+            item.Deliver(auxItem.AccionPlaneada,auxItem.AccionRealizada,item.PlanAccionId);
             var response = "";
             try
             {
@@ -83,11 +83,13 @@ namespace AppAc.Application
                 response = "No se pudo actualizar";
             }
             _unitOfWork.Commit();
-            return new ItemPlanResponse(response);
+            return new ItemPlanResponse(response, item);
         }
     }
     public record ItemPlanRequest(int PlanId, string AccionPlaneada_Descripcion,string AccionRealizada_Descripcion, string AccionRealizada_evidencia_Ruta);
-    public record ItemPlanResponse(string Message);
+    public record ItemPlanUpdateRequest(int Id, string AccionPlaneada_Descripcion,string AccionRealizada_Descripcion, string AccionRealizada_evidencia_Ruta);
+
+    public record ItemPlanResponse(string Message, ItemPlan ItemPlan);
 
    
     
