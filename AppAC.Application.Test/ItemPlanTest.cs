@@ -73,5 +73,15 @@ namespace AppAC.Application.Test
             response.Message.Should().Be("No se encontró el item");
         }
 
+        [Test]
+        public void PuedoModificarItem()
+        {
+            var plan=PlanAccionMother.CreatePlanAccion();
+            _planAccionRepository.Add(plan);
+            _dbContext.SaveChanges();
+            var request = new ItemPlanRequest(1,"Se describe aqui dsadasdad","Se describe lo que se hizo","loquesea/dir");
+            var response = _itemPlanService.ModificarItem(1,request);
+            response.Message.Should().Be("Se actualizó el item correctamente");
+        }
     }
 }
