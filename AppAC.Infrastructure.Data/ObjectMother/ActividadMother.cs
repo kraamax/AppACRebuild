@@ -14,8 +14,9 @@ namespace AppAC.Infrastructure.Data.ObjectMother
         public static Actividad CreateActividad() 
         {
             var docente = DocenteMother.CreateDocente("12321313");
+            var jefeDpto = JefeDptoMother.CreateJefeDpto("123313");
             var tipoActividad = new TipoActividad("Tutorias");
-            var actividad = new Actividad(tipoActividad);
+            var actividad = new Actividad(tipoActividad,jefeDpto);
             actividad.Asignar(docente, 10);
             return actividad;
         }

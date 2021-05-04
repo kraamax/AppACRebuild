@@ -18,7 +18,7 @@ namespace AppAC.Infrastructure.Data
 
         public Actividad Find(int id)
         {
-            return _db.Set<Actividad>().Include(c=>c.Docente).FirstOrDefault(c => c.Id == id);
+            return _db.Set<Actividad>().Include(c=>c.Responsable).FirstOrDefault(c => c.Id == id);
         }
 
     }

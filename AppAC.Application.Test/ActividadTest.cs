@@ -45,11 +45,13 @@ namespace AppAC.Application.Test
         {
 
             var docente = DocenteMother.CreateDocente("103523423");
+            var jefeDpto = JefeDptoMother.CreateJefeDpto("11223334");
+            _usuarioRepository.Add(jefeDpto);
             _usuarioRepository.Add(docente);
             var tipo = new TipoActividad("Investigaci�n");
             _tipoActividadRepository.Add(tipo);
             _dbContext.SaveChanges();
-            var request = new ActividadRequest(1, "103523423", 10);
+            var request = new ActividadRequest(1 ,"11223334","103523423", 10);
             var response = _asignarActividadService.Handle(request);
             response.Message.Should().Be("Se asignaron 10 al docente Sebastian");
         }

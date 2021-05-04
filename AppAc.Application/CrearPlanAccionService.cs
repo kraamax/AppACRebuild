@@ -60,9 +60,9 @@ namespace AppAc.Application
                 response = "No se pudo registrar";
             }
             _unitOfWork.Commit();
-            if (actividad.Docente == null)
+            if (actividad.Responsable == null)
                 return new PlanAccionResponse("No trajo docente",planAccion);
-            _emailServer.Send("Nueva plan registrado",$"Se registro el plan de acciones", actividad.Docente.Email);
+            _emailServer.Send("Nueva plan registrado",$"Se registro el plan de acciones", actividad.Responsable.Email);
             return new PlanAccionResponse(response,planAccion);
         }
         

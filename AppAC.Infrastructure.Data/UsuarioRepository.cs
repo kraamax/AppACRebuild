@@ -21,5 +21,11 @@ namespace AppAC.Infrastructure.Data
            return _db.Set<Docente>().Include(d => d.Departamento)
                .FirstOrDefault(d => d.Identificacion == identificacion);
         }
+
+        public JefeDpto FindJefeDpto(string identificacion)
+        {
+            return _db.Set<JefeDpto>().Include(d => d.Departamento)
+                           .FirstOrDefault(d => d.Identificacion == identificacion);
+        }
     }
 }

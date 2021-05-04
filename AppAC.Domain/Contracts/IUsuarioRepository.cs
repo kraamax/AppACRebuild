@@ -10,6 +10,7 @@ namespace AppAC.Domain.Contracts
     public interface IUsuarioRepository: IGenericRepository<Usuario>
     {
         Docente FindDocente(string identificacion);
+        JefeDpto FindJefeDpto(string identificacion);
         
     }
 }

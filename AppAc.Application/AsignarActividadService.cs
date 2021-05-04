@@ -29,17 +29,18 @@ namespace AppAc.Application
         public ActividadResponse Handle(ActividadRequest request)
         {
             var tipoActividad = _tipoActividadRepository.Find(request.TipoActividadId);
-            var docente =_usuarioRepository.FindDocente(request.IdentificaciónDocente);
-            if (docente == null)
+            var asignador = _usuarioRepository.FindJefeDpto(request.IdentificacionAsignador);
+            var responsable =_usuarioRepository.FindDocente(request.IdentificacionResponsable);
+            if (responsable == null)
                 return new ActividadResponse("No se encontró el docente", null);
-            var actividad = new Actividad(tipoActividad);
-            var response = actividad.Asignar(docente, request.HorasAsignadas);
+            var actividad = new Actividad(tipoActividad,asignador);
+            var response = actividad.Asignar(responsable, request.HorasAsignadas);
             _actividadRepository.Add(actividad);
             _unitOfWork.Commit();
-            _emailServer.Send("Nueva actividad asignada",$"Se efectúo la asignacion de la actividad", docente.Email);
+            _emailServer.Send("Nueva actividad asignada",$"Se efectúo la asignacion de la actividad", responsable.Email);
             return new ActividadResponse(response, actividad);
         }
     }
-    public record ActividadRequest(int TipoActividadId,string IdentificaciónDocente, int HorasAsignadas);
+    public record ActividadRequest(int TipoActividadId,string IdentificacionAsignador, string IdentificacionResponsable, int HorasAsignadas);
     public record ActividadResponse(string Message, Actividad Actividad);
 }

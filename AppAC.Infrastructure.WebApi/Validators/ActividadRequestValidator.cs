@@ -10,7 +10,9 @@ namespace AppAC.Infrastructure.WebApi.Validators
         {
             RuleFor(x => x.HorasAsignadas)
                 .NotEmpty();
-            RuleFor(x => x.IdentificaciónDocente)
+            RuleFor(x => x.IdentificacionAsignador)
+                .NotEmpty();
+            RuleFor(x => x.IdentificacionResponsable)
                 .NotEmpty();
             RuleFor(x => x.TipoActividadId)
                 .NotEmpty();

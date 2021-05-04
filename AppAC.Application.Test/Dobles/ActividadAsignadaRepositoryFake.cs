@@ -32,8 +32,10 @@ namespace AppAC.Application.Test.Dobles
 
         public Actividad Find(int id)
         {
+            var dpto = new Departamento("AB21", "Departamento de Ingenieria de Sistemas");
             var actividad = new TipoActividad("Asesoria");
-            return new Actividad(actividad);
+            var asignador = new JefeDpto("1223425","Lucas", "Ortiz","example@gmail.com","Masculino",dpto);
+            return new Actividad(actividad,asignador);
         }
 
         public Actividad Find(object id)

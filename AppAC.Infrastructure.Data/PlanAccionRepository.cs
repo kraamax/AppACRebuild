@@ -19,7 +19,7 @@ namespace AppAC.Infrastructure.Data
         public PlanAccion FindByActividad(int actividadId)
         {
             return _db.Set<PlanAccion>()
-                .Include(c => c.Actividad).ThenInclude(c=>c.Docente)
+                .Include(c => c.Actividad).ThenInclude(c=>c.Responsable)
                 .Include(c=>c.Items).ThenInclude(c=>c.AccionPlaneada)
                 .Include(c=>c.Items).ThenInclude(c=>c.AccionRealizada)
                 .ThenInclude(a=>a.Evidencia)

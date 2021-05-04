@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AppAC.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(AppACContext))]
-    [Migration("20210502073309_InitialCreate")]
+    [Migration("20210504172431_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,7 +24,7 @@ namespace AppAC.Infrastructure.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("DocenteId")
+                    b.Property<int?>("AsignadorId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Estado")
@@ -36,12 +36,17 @@ namespace AppAC.Infrastructure.Data.Migrations
                     b.Property<int>("HorasAsignadas")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("ResponsableId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int?>("TipoActividadId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DocenteId");
+                    b.HasIndex("AsignadorId");
+
+                    b.HasIndex("ResponsableId");
 
                     b.HasIndex("TipoActividadId");
 
@@ -79,7 +84,7 @@ namespace AppAC.Infrastructure.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("PlanAccionId")
+                    b.Property<int>("PlanAccionId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
@@ -217,15 +222,21 @@ namespace AppAC.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("AppAC.Domain.Actividad", b =>
                 {
-                    b.HasOne("AppAC.Domain.Docente", "Docente")
+                    b.HasOne("AppAC.Domain.JefeDpto", "Asignador")
                         .WithMany()
-                        .HasForeignKey("DocenteId");
+                        .HasForeignKey("AsignadorId");
+
+                    b.HasOne("AppAC.Domain.Docente", "Responsable")
+                        .WithMany()
+                        .HasForeignKey("ResponsableId");
 
                     b.HasOne("AppAC.Domain.TipoActividad", "TipoActividad")
                         .WithMany()
                         .HasForeignKey("TipoActividadId");
 
-                    b.Navigation("Docente");
+                    b.Navigation("Asignador");
+
+                    b.Navigation("Responsable");
 
                     b.Navigation("TipoActividad");
                 });
@@ -234,7 +245,9 @@ namespace AppAC.Infrastructure.Data.Migrations
                 {
                     b.HasOne("AppAC.Domain.PlanAccion", null)
                         .WithMany("Items")
-                        .HasForeignKey("PlanAccionId");
+                        .HasForeignKey("PlanAccionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.OwnsOne("AppAC.Domain.AccionPlaneada", "AccionPlaneada", b1 =>
                         {

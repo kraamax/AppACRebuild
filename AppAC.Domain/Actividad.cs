@@ -11,14 +11,20 @@ namespace AppAC.Domain
         {
 
         }
-        public Actividad(TipoActividad tipoActividad)
+        
+        public Actividad(TipoActividad tipoActividad, JefeDpto asignador)
         {
             TipoActividad = tipoActividad;
             Estado = "";
+            Asignador = asignador;
             FechaAsignacion = DateTime.Now;
         }
+        
         public TipoActividad TipoActividad { get; set; }
-        public Docente Docente { get; set; }
+        
+        public Docente Responsable { get; set; }
+        
+        public JefeDpto Asignador { get; set; }
         public int HorasAsignadas { get; set; }
         public string Estado { get; set; }
         public DateTime FechaAsignacion { get; set; }
@@ -33,7 +39,7 @@ namespace AppAC.Domain
             {
                 return "Las horas asignadas no pueden ser mayor a veinte";
             }
-            Docente = docente;
+            Responsable = docente;
             HorasAsignadas = horasAsignadas;
             return $"Se asignaron {HorasAsignadas} al docente {docente.Nombres}";
         }

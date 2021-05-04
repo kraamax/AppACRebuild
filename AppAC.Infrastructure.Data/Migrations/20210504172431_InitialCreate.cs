@@ -91,7 +91,8 @@ namespace AppAC.Infrastructure.Data.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     TipoActividadId = table.Column<int>(type: "INTEGER", nullable: true),
-                    DocenteId = table.Column<int>(type: "INTEGER", nullable: true),
+                    ResponsableId = table.Column<int>(type: "INTEGER", nullable: true),
+                    AsignadorId = table.Column<int>(type: "INTEGER", nullable: true),
                     HorasAsignadas = table.Column<int>(type: "INTEGER", nullable: false),
                     Estado = table.Column<string>(type: "TEXT", nullable: true),
                     FechaAsignacion = table.Column<DateTime>(type: "TEXT", nullable: false)
@@ -106,8 +107,14 @@ namespace AppAC.Infrastructure.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Actividades_Usuarios_DocenteId",
-                        column: x => x.DocenteId,
+                        name: "FK_Actividades_Usuarios_AsignadorId",
+                        column: x => x.AsignadorId,
+                        principalTable: "Usuarios",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Actividades_Usuarios_ResponsableId",
+                        column: x => x.ResponsableId,
                         principalTable: "Usuarios",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -142,7 +149,7 @@ namespace AppAC.Infrastructure.Data.Migrations
                     AccionRealizada_Evidencia_Ruta = table.Column<string>(type: "TEXT", nullable: true),
                     AccionRealizada_Evidencia_FechaCarga = table.Column<DateTime>(type: "TEXT", nullable: true),
                     AccionRealizada_Descripcion = table.Column<string>(type: "TEXT", nullable: true),
-                    PlanAccionId = table.Column<int>(type: "INTEGER", nullable: true)
+                    PlanAccionId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -152,7 +159,7 @@ namespace AppAC.Infrastructure.Data.Migrations
                         column: x => x.PlanAccionId,
                         principalTable: "Planes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -161,9 +168,14 @@ namespace AppAC.Infrastructure.Data.Migrations
                 values: new object[] { 1, "ss232", "Matematicas y Fisica" });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Actividades_DocenteId",
+                name: "IX_Actividades_AsignadorId",
                 table: "Actividades",
-                column: "DocenteId");
+                column: "AsignadorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Actividades_ResponsableId",
+                table: "Actividades",
+                column: "ResponsableId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Actividades_TipoActividadId",
