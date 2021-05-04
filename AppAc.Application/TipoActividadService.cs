@@ -40,6 +40,16 @@ namespace AppAC.Application
             _unitOfWork.Commit();
             return new TipoActividadResponse($"Actividad {tipoActividad.NombreActividad} guardada",tipoActividad);
         }
+
+        public IEnumerable<TipoActividad> GellALl()
+        {
+            return _tipoActividadRepository.GetAll();
+        }
+        
+        public TipoActividad GetTipoActividad(int id)
+        {
+            return _tipoActividadRepository.Find(id);
+        }
     }
     public record TipoActividadRequest(string Nombre);
     public record TipoActividadResponse(string Mensaje, TipoActividad TipoActividad);

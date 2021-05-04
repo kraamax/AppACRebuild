@@ -36,5 +36,19 @@ namespace AppAC.Infrastructure.WebApi.Controllers
             var response = service.CrearTipoActividad(request);
             return Ok(response);
         }
+        [HttpGet("GetAll")]
+        public IActionResult GetAll()
+        {
+            var service = new TipoActividadService(_unitOfWork, _tipoActividadRepository, _mailServer);
+            var response = service.GellALl();
+            return Ok(response);
+        }
+        [HttpPost("GetById")]
+        public IActionResult GetTipoActividad(int id)
+        {
+            var service = new TipoActividadService(_unitOfWork, _tipoActividadRepository, _mailServer);
+            var response = service.GetTipoActividad(id);
+            return Ok(response);
+        }
     }
 }

@@ -16,27 +16,41 @@ namespace AppAC.Infrastructure.WebApi.Controllers
     public class DocenteController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IUsuarioRepository _usuarioRepository;
+        private readonly IDocenteRepository _docenteRepository;
         private readonly IDepartamentoRepository _departamentoRepository;
         private readonly IMailServer _mailServer;
         public DocenteController(
             IUnitOfWork unitOfWork, 
-            IUsuarioRepository usuarioRepository, 
+            IDocenteRepository docenteRepository, 
             IDepartamentoRepository departamentoRepository,
             IMailServer mailServer
         )
 
         {
             _unitOfWork = unitOfWork;
-            _usuarioRepository = usuarioRepository;
+            _docenteRepository = docenteRepository;
             _departamentoRepository = departamentoRepository;
             _mailServer = mailServer;
         }
         [HttpPost]
         public IActionResult PostCrearDocente(DocenteRequest request)
         {
-            var service = new CrearDocenteService(_unitOfWork, _departamentoRepository, _usuarioRepository, _mailServer);
+            var service = new CrearDocenteService(_unitOfWork, _departamentoRepository, _docenteRepository, _mailServer);
             var response = service.Handle(request);
+            return Ok(response);
+        }
+        [HttpGet("GetAll")]
+        public IActionResult GetALl()
+        {
+            var service = new ConsultarDocenteService(_docenteRepository);
+            var response = service.GetAll();
+            return Ok(response);
+        }
+        [HttpGet("GetByIdentificacion")]
+        public IActionResult GetByIdentificacion(string identificacion)
+        {
+            var service = new ConsultarDocenteService(_docenteRepository);
+            var response = service.GetByIdentificacion(identificacion);
             return Ok(response);
         }
     }

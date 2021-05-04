@@ -31,7 +31,7 @@ namespace AppAC.Application.Test
             _crearDocenteService = new CrearDocenteService(
                 new UnitOfWork(_dbContext),
                 _departamentoRepository,
-                new UsuarioRepository(_dbContext),
+                new DocenteRepository(_dbContext),
                 new MailServerFake()
                 );
         }

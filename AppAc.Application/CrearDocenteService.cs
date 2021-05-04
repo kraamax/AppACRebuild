@@ -9,18 +9,18 @@ namespace AppAC.Application
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IDepartamentoRepository _departamentoRepository;
-        private readonly IUsuarioRepository _usuarioRepository;
+        private readonly IDocenteRepository _docenteRepository;
         private readonly IMailServer _emailServer;
         public CrearDocenteService(
             IUnitOfWork unitOfWork,
             IDepartamentoRepository departamentoRepository,
-            IUsuarioRepository usuarioRepository,
+            IDocenteRepository docenteRepository,
             IMailServer emailServer
         )
         {
             _unitOfWork = unitOfWork;
             _departamentoRepository = departamentoRepository;
-            _usuarioRepository = usuarioRepository;
+            _docenteRepository = docenteRepository;
             _emailServer = emailServer;
         }
 
@@ -50,7 +50,7 @@ namespace AppAC.Application
             string response = "";
             try
             {
-                _usuarioRepository.Add(docente);
+                _docenteRepository.Add(docente);
                 response = $"Se registró correctamente el docente {docente.Nombres}";
             }
             catch (Exception e)

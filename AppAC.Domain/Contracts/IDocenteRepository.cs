@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace AppAC.Domain.Contracts
 {
-    public interface IUsuarioRepository: IGenericRepository<Usuario>
+    public interface IDocenteRepository: IGenericRepository<Docente>
     {
         Docente FindDocente(string identificacion);
-        
     }
 }

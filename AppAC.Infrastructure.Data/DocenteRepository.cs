@@ -10,9 +10,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AppAC.Infrastructure.Data
 {
-    public class UsuarioRepository : GenericRepository<Usuario>, IUsuarioRepository
+    public class DocenteRepository : GenericRepository<Docente>, IDocenteRepository
     {
-        public UsuarioRepository(IDbContext context) : base(context)
+        public DocenteRepository(IDbContext context) : base(context)
         {
         }
 
