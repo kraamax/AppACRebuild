@@ -56,6 +56,7 @@ namespace AppAC.Infrastructure.WebApi
             services.AddScoped<IItemPlanRepository, ItemPlanRepository>();
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<IDocenteRepository, DocenteRepository>();
+            services.AddScoped<IJefeDptoRepository, JefeDptoRepository>();
             services.AddScoped<IDepartamentoRepository, DepartamentoRepository>();
             services.AddScoped<IDbContext, AppACContext>(); //Crear Instancia por peticion
             services.AddScoped<IMailServer, MailServer>(); //Crear Instancia por peticion

@@ -31,7 +31,7 @@ namespace AppAC.Application.Test
             _crearJefeDptoService = new CrearJefeDptoService(
                 new UnitOfWork(_dbContext),
                 _departamentoRepository,
-                new UsuarioRepository(_dbContext),
+                new JefeDptoRepository(_dbContext),
                 new MailServerFake()
                 );
         }

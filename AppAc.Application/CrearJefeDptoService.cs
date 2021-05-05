@@ -9,18 +9,18 @@ namespace AppAC.Application
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IDepartamentoRepository _departamentoRepository;
-        private readonly IUsuarioRepository _usuarioRepository;
+        private readonly IJefeDptoRepository _jefeDptoRepository;
         private readonly IMailServer _emailServer;
         public CrearJefeDptoService(
             IUnitOfWork unitOfWork,
             IDepartamentoRepository departamentoRepository,
-            IUsuarioRepository usuarioRepository,
+            IJefeDptoRepository jefeDptoRepository,
             IMailServer emailServer
         )
         {
             _unitOfWork = unitOfWork;
             _departamentoRepository = departamentoRepository;
-            _usuarioRepository = usuarioRepository;
+            _jefeDptoRepository = jefeDptoRepository;
             _emailServer = emailServer;
         }
 
@@ -51,7 +51,7 @@ namespace AppAC.Application
             string response = "";
             try
             {
-                _usuarioRepository.Add(jefeDpto);
+                _jefeDptoRepository.Add(jefeDpto);
                 response = $"Se registró correctamente el Jefe de departamento {jefeDpto.Nombres}";
             }
             catch (Exception e)
