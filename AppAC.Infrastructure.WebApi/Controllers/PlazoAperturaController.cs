@@ -15,22 +15,26 @@ namespace AppAC.Infrastructure.WebApi.Controllers
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IPlazoAperturaRepository _plazoAperturaRepository;
+        private readonly IJefeDptoRepository _jefeDptoRepository;
+
         private readonly IMailServer _mailServer;
         public PlazoAperturaController(
             IUnitOfWork unitOfWork, 
             IPlazoAperturaRepository plazoAperturaRepository, 
-            IMailServer mailServer
+            IMailServer mailServer,
+            IJefeDptoRepository jefeDptoRepository
             )
 
         {
             _unitOfWork = unitOfWork;
             _plazoAperturaRepository = plazoAperturaRepository;
             _mailServer = mailServer;
+            _jefeDptoRepository = jefeDptoRepository;
         }
         [HttpPost]
         public string PostCrearPlazoApertura(PlazoAperturaRequest request)
         {
-            var service = new PlazoAperturaService(_unitOfWork, _plazoAperturaRepository, _mailServer);
+            var service = new PlazoAperturaService(_unitOfWork ,_plazoAperturaRepository, _mailServer,_jefeDptoRepository);
             var response = service.CrearPlazoApertura(request);
             return response;
         }

@@ -120,6 +120,9 @@ namespace AppAC.Infrastructure.Data.Migrations
                     b.Property<bool>("Activo")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("CreadorId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<DateTime>("FechaFin")
                         .HasColumnType("TEXT");
 
@@ -127,6 +130,8 @@ namespace AppAC.Infrastructure.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CreadorId");
 
                     b.ToTable("PlazosApertura");
                 });
@@ -312,6 +317,15 @@ namespace AppAC.Infrastructure.Data.Migrations
                         .HasForeignKey("ActividadId");
 
                     b.Navigation("Actividad");
+                });
+
+            modelBuilder.Entity("AppAC.Domain.PlazoApertura", b =>
+                {
+                    b.HasOne("AppAC.Domain.JefeDpto", "Creador")
+                        .WithMany()
+                        .HasForeignKey("CreadorId");
+
+                    b.Navigation("Creador");
                 });
 
             modelBuilder.Entity("AppAC.Domain.Docente", b =>

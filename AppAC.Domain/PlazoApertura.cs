@@ -7,10 +7,16 @@ namespace AppAC.Domain
 {
     public class PlazoApertura: Entity<int>, IAggregateRoot
     {
+        public PlazoApertura(JefeDpto creador)
+        {
+            Activo = true;
+            Creador = creador;
+        }
         public PlazoApertura()
         {
             Activo = true;
         }
+        public JefeDpto Creador { get; private set; }
         public DateTime FechaInicio { get; private set; }
         public DateTime FechaFin { get; private set; }
         public bool Activo { get; private set; }
@@ -25,6 +31,13 @@ namespace AppAC.Domain
                 return "El plazo fue correctamente ingresado";
             }
         }
+
+        public bool EstaEntreElPlazoEstablecido(DateTime dateTime)
+        {
+            Console.WriteLine($"fecha inicio {FechaInicio} fecha comparar {dateTime} fecha fin {FechaFin}");
+            return FechaInicio <= dateTime && FechaFin >= dateTime;
+        }
+        
 
     }
 }

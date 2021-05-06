@@ -9,5 +9,6 @@ namespace AppAC.Domain.Contracts
 {
     public interface IPlazoAperturaRepository : IGenericRepository<PlazoApertura>
     {
+        PlazoApertura GetCurrentPlazoByCreador(string idCreador);
     }
 }

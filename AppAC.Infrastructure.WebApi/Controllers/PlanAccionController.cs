@@ -19,10 +19,12 @@ namespace AppAC.Infrastructure.WebApi.Controllers
         private readonly IUnitOfWork _unitOfWork;
         private readonly IPlanAccionRepository _planAccionRepository;
         private readonly IActividadRepository _actividadRepository;
+        private readonly IPlazoAperturaRepository _plazoAperturaRepository;
         private readonly IMailServer _mailServer;
         public PlanAccionController(
             IUnitOfWork unitOfWork, 
             IPlanAccionRepository planAccionRepository, 
+            IPlazoAperturaRepository plazoAperturaRepository,
             IActividadRepository actividadRepository,
             IMailServer mailServer
         )
@@ -31,12 +33,13 @@ namespace AppAC.Infrastructure.WebApi.Controllers
             _unitOfWork = unitOfWork;
             _planAccionRepository = planAccionRepository;
             _actividadRepository = actividadRepository;
+            _plazoAperturaRepository = plazoAperturaRepository;
             _mailServer = mailServer;
         }
         [HttpPost]
         public IActionResult PostCrearPlanAccion(PlanAccionRequest request)
         {
-            var service = new CrearPlanAccionService(_unitOfWork, _actividadRepository, _planAccionRepository, _mailServer);
+            var service = new CrearPlanAccionService(_unitOfWork, _actividadRepository, _planAccionRepository, _plazoAperturaRepository, _mailServer);
             var response = service.Handle(request);
             return Ok(response);
         }

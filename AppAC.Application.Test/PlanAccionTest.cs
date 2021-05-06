@@ -17,8 +17,8 @@ namespace AppAC.Application.Test
     {
         private AppACContext _dbContext;
         private CrearPlanAccionService _crearPlanAccionService;
-        private UsuarioRepository _usuarioRepository;
         private PlanAccionRepository _planAccionRepository;
+        private PlazoAperturaRepository _plazoAperturaRepository;
         private ActividadRepository _actividadRepository;
 
         [SetUp]
@@ -32,13 +32,14 @@ namespace AppAC.Application.Test
             _dbContext = new AppACContext(optionsSqlite);
             _dbContext.Database.EnsureDeleted();
             _dbContext.Database.EnsureCreated();
-            _usuarioRepository = new UsuarioRepository(_dbContext);
+            _plazoAperturaRepository = new PlazoAperturaRepository(_dbContext);
             _planAccionRepository = new PlanAccionRepository(_dbContext);
             _actividadRepository = new ActividadRepository(_dbContext);
             _crearPlanAccionService = new CrearPlanAccionService(
                 new UnitOfWork(_dbContext),
                 _actividadRepository,
                 _planAccionRepository,
+                _plazoAperturaRepository,
                 new MailServerFake()
                 );
         }
@@ -47,6 +48,8 @@ namespace AppAC.Application.Test
         public void PuedoCrearPlanDeAccion()
         {
             var actividad = ActividadMother.CreateActividad();
+            var plazo = PlazoAperturaMother.CreatePlazoApertura("123313");
+            _plazoAperturaRepository.Add(plazo);
             _actividadRepository.Add(actividad);
             _dbContext.SaveChanges();
             var item = new ItemPlanRequest(0,"Se describe aqui","Se describe lo que se hizo","loquesea/dir");
@@ -73,6 +76,8 @@ namespace AppAC.Application.Test
         {
             var actividad = ActividadMother.CreateActividad();
             _actividadRepository.Add(actividad);
+            var plazo = PlazoAperturaMother.CreatePlazoApertura("123313");
+            _plazoAperturaRepository.Add(plazo);
             _dbContext.SaveChanges();
             var item = new ItemPlanRequest(0,"Se describe aqui","Se describe lo que se hizo","loquesea/dir");
             var items = new List<ItemPlanRequest>();

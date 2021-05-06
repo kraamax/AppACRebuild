@@ -12,22 +12,26 @@ namespace AppAc.Application
         private readonly IUnitOfWork _unitOfWork;
         private readonly IActividadRepository _actividadRepository;
         private readonly IPlanAccionRepository _planAccionRepository;
+        private readonly IPlazoAperturaRepository _plazoAperturaRepository;
         private readonly IMailServer _emailServer;
 
         public CrearPlanAccionService(
            IUnitOfWork unitOfWork,
            IActividadRepository actividadRepository,
            IPlanAccionRepository planAccionRepository,
+           IPlazoAperturaRepository plazoAperturaRepository,
            IMailServer emailServer
        )
         {
             _unitOfWork = unitOfWork;
             _actividadRepository = actividadRepository;
             _planAccionRepository = planAccionRepository;
+            _plazoAperturaRepository = plazoAperturaRepository;
             _emailServer = emailServer;
         }
         public PlanAccionResponse Handle(PlanAccionRequest request)
         {
+            var verificarPlazoAperturaService = new VerificarPlazoAperturaService(_plazoAperturaRepository);
             var planAccion = _planAccionRepository.FindByActividad(request.ActividadId);
             if (planAccion != null)
                 return new PlanAccionResponse("Ya existe un plan de acción para esta actividad",planAccion);
@@ -35,7 +39,10 @@ namespace AppAc.Application
             var actividad = _actividadRepository.Find(request.ActividadId);
             if (actividad == null)
                 return new PlanAccionResponse("Debe tener una actividad asignada para crear una plan de acciones",planAccion);
-            
+            var verificacionPlazoApertura = verificarPlazoAperturaService.Handle(actividad.Asignador.Identificacion);
+            if (verificacionPlazoApertura.Contains("Error"))
+                return new PlanAccionResponse(verificacionPlazoApertura, null);
+
             planAccion = new PlanAccion();
             var errors = canConvertToItemPlanList(request.Items);
             if (errors.Any())

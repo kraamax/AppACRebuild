@@ -13,18 +13,25 @@ namespace AppAC.Application
         private readonly IUnitOfWork _unitOfWork;
         private readonly IPlazoAperturaRepository _plazoAperturaRepository;
         private readonly IMailServer _emailServer;
+        private readonly IJefeDptoRepository _jefeDptoRepository;
         public PlazoAperturaService(
             IUnitOfWork unitOfWork,
             IPlazoAperturaRepository plazoAperturaRepository,
-            IMailServer emailServer
+            IMailServer emailServer,
+            IJefeDptoRepository jefeDptoRepository
             )
         {
             _unitOfWork = unitOfWork;
             _plazoAperturaRepository = plazoAperturaRepository;
             _emailServer = emailServer;
+            _jefeDptoRepository = jefeDptoRepository;
         }
-        public string CrearPlazoApertura(PlazoAperturaRequest request) {
-            var plazoApertura = new PlazoApertura();
+        public string CrearPlazoApertura(PlazoAperturaRequest request)
+        {
+            var jefeDpto =_jefeDptoRepository.FindFirstOrDefault(c => c.Identificacion == request.IdentificacionCreador);
+            if (jefeDpto == null)
+                return "No existe el Jefe de departamento";
+            var plazoApertura = new PlazoApertura(jefeDpto);
             var response = plazoApertura.EstablecerPlazo(request.FechaInicio, request.FechaFin);
             if (response.Equals("El plazo fue correctamente ingresado")) { 
                 _plazoAperturaRepository.Add(plazoApertura);
@@ -32,16 +39,9 @@ namespace AppAC.Application
             }
             return response;
         }
-    }
-    public class PlazoAperturaRequest{
-        public PlazoAperturaRequest(DateTime fechaInicio, DateTime fechaFin)
-        {
-            FechaInicio = fechaInicio;
-            FechaFin = fechaFin;
-        }
-        public DateTime FechaInicio { get; set; }
-        public DateTime FechaFin { get; set; }
 
     }
+
+    public record PlazoAperturaRequest(string IdentificacionCreador, DateTime FechaInicio, DateTime FechaFin);
 
 }
