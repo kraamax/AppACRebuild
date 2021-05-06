@@ -19,6 +19,8 @@ namespace AppAC.Application.Test
         private ItemPlanService _itemPlanService;
         private PlanAccionRepository _planAccionRepository;
         private ItemPlanRepository _itemPlanRepository;
+        private PlazoAperturaRepository _plazoAperturaRepository;
+
         [SetUp]
         public void Setup()
         {
@@ -32,10 +34,12 @@ namespace AppAC.Application.Test
             _dbContext.Database.EnsureCreated();
             _planAccionRepository = new PlanAccionRepository(_dbContext);
             _itemPlanRepository = new ItemPlanRepository(_dbContext);
+            _plazoAperturaRepository = new PlazoAperturaRepository(_dbContext);
             _itemPlanService = new ItemPlanService(
                 new UnitOfWork(_dbContext),
                 _planAccionRepository,
-                _itemPlanRepository
+                _itemPlanRepository,
+                _plazoAperturaRepository
                 );
         }
 
@@ -44,6 +48,8 @@ namespace AppAC.Application.Test
         {
 
             var plan=PlanAccionMother.CreatePlanAccion();
+            var plazo = PlazoAperturaMother.CreatePlazoApertura("123313");
+            _plazoAperturaRepository.Add(plazo);
             _planAccionRepository.Add(plan);
             _dbContext.SaveChanges();
             var request = new ItemPlanRequest(1,"Se describe aqui","Se describe lo que se hizo","loquesea/dir");
@@ -55,6 +61,8 @@ namespace AppAC.Application.Test
         {
             var plan=PlanAccionMother.CreatePlanAccion();
             _planAccionRepository.Add(plan);
+            var plazo = PlazoAperturaMother.CreatePlazoApertura("123313");
+            _plazoAperturaRepository.Add(plazo);
             _dbContext.SaveChanges();
             var request = new ItemPlanRequest(1,"Se describe aqui","Se describe lo que se hizo","loquesea/dir");
             _itemPlanService.RegistrarItem(request);
@@ -77,6 +85,8 @@ namespace AppAC.Application.Test
         public void PuedoModificarItem()
         {
             var plan=PlanAccionMother.CreatePlanAccion();
+            var plazo = PlazoAperturaMother.CreatePlazoApertura("123313");
+            _plazoAperturaRepository.Add(plazo);
             _planAccionRepository.Add(plan);
             _dbContext.SaveChanges();
             var request = new ItemPlanUpdateRequest(1,"Se describe aqui dsadasdad","Se describe lo que se hizo","loquesea/dir");
