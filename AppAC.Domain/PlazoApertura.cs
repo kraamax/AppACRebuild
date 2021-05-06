@@ -37,7 +37,12 @@ namespace AppAC.Domain
             Console.WriteLine($"fecha inicio {FechaInicio} fecha comparar {dateTime} fecha fin {FechaFin}");
             return FechaInicio <= dateTime && FechaFin >= dateTime;
         }
-        
+
+        public void Deshabilitar()
+        {
+            Activo = false;
+        }
+
 
     }
 }

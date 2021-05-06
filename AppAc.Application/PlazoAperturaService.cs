@@ -36,6 +36,12 @@ namespace AppAC.Application
             if (response.Equals("El plazo fue correctamente ingresado"))
             {
                 var currentPlazo=_plazoAperturaRepository.GetCurrentPlazoByCreador(jefeDpto.Identificacion);
+                if (currentPlazo != null)
+                {
+                    currentPlazo.Deshabilitar();
+                    _plazoAperturaRepository.Update(currentPlazo);
+
+                }
                 _plazoAperturaRepository.Add(plazoApertura);
                 _unitOfWork.Commit();
             }
