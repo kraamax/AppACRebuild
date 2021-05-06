@@ -33,14 +33,24 @@ namespace AppAC.Application
                 return "No existe el Jefe de departamento";
             var plazoApertura = new PlazoApertura(jefeDpto);
             var response = plazoApertura.EstablecerPlazo(request.FechaInicio, request.FechaFin);
-            if (response.Equals("El plazo fue correctamente ingresado")) { 
+            if (response.Equals("El plazo fue correctamente ingresado"))
+            {
+                var currentPlazo=_plazoAperturaRepository.GetCurrentPlazoByCreador(jefeDpto.Identificacion);
                 _plazoAperturaRepository.Add(plazoApertura);
                 _unitOfWork.Commit();
             }
             return response;
         }
-
+        public IEnumerable<PlazoApertura> GetAll()
+        {
+            return _plazoAperturaRepository.GetAll();
+        }
+        public IEnumerable<PlazoApertura> GetByJefeDpto(string identificacion)
+        {
+            return _plazoAperturaRepository.FindBy(c=>c.Creador.Identificacion==identificacion);
+        }
     }
+    
 
     public record PlazoAperturaRequest(string IdentificacionCreador, DateTime FechaInicio, DateTime FechaFin);
 

@@ -13,6 +13,8 @@ namespace AppAc.Application
         private readonly IPlanAccionRepository _planAccionRepository;
         private readonly IPlazoAperturaRepository _plazoAperturaRepository;
         private readonly IItemPlanRepository _itemPlanRepository;
+        private VerificarPlazoAperturaService verificarPlazoAperturaService;
+
 
         public ItemPlanService(
            IUnitOfWork unitOfWork,
@@ -25,6 +27,7 @@ namespace AppAc.Application
             _itemPlanRepository = itemPlanRepository;
             _planAccionRepository = planAccionRepository;
             _plazoAperturaRepository = plazoAperturaRepository;
+            verificarPlazoAperturaService = new VerificarPlazoAperturaService(_plazoAperturaRepository);
         }
         public ItemPlanResponse RegistrarItem(ItemPlanRequest request)
         {
@@ -32,7 +35,6 @@ namespace AppAc.Application
             var planAccion = _planAccionRepository.Find(request.PlanId);
             if (planAccion == null)
                 return new ItemPlanResponse("No se encontró el plan de acción",null);
-            var verificarPlazoAperturaService = new VerificarPlazoAperturaService(_plazoAperturaRepository);
             var verificacionPlazoApertura = verificarPlazoAperturaService.Handle(planAccion.Actividad.Asignador.Identificacion);
             if (verificacionPlazoApertura.Contains("Error"))
                 return new ItemPlanResponse(verificacionPlazoApertura, null);
@@ -65,7 +67,6 @@ namespace AppAc.Application
             if (item == null)
                 return new ItemPlanResponse("No se encontró el item",item);
             var plan = _planAccionRepository.Find(item.PlanAccionId);
-            var verificarPlazoAperturaService = new VerificarPlazoAperturaService(_plazoAperturaRepository);
             var verificacionPlazoApertura = verificarPlazoAperturaService.Handle(plan.Actividad.Asignador.Identificacion);
             if (verificacionPlazoApertura.Contains("Error"))
                 return new ItemPlanResponse(verificacionPlazoApertura, null);
@@ -80,7 +81,6 @@ namespace AppAc.Application
             if (item == null)
                 return new ItemPlanResponse("No se encontro el item", null);
             var plan = _planAccionRepository.Find(item.PlanAccionId);
-            var verificarPlazoAperturaService = new VerificarPlazoAperturaService(_plazoAperturaRepository);
             var verificacionPlazoApertura = verificarPlazoAperturaService.Handle(plan.Actividad.Asignador.Identificacion);
             if (verificacionPlazoApertura.Contains("Error"))
                 return new ItemPlanResponse(verificacionPlazoApertura, null);

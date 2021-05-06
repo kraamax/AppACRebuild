@@ -38,5 +38,19 @@ namespace AppAC.Infrastructure.WebApi.Controllers
             var response = service.CrearPlazoApertura(request);
             return response;
         }
+        [HttpGet("GetAll")]
+        public IActionResult GetAll()
+        {
+            var service = new PlazoAperturaService(_unitOfWork ,_plazoAperturaRepository, _mailServer,_jefeDptoRepository);
+            var response = service.GetAll();
+            return Ok(response);
+        }
+        [HttpGet("GetByJefeDpto")]
+        public IActionResult GetByJefeDpto(string identificacion)
+        {
+            var service = new PlazoAperturaService(_unitOfWork ,_plazoAperturaRepository, _mailServer,_jefeDptoRepository);
+            var response = service.GetByJefeDpto(identificacion);
+            return Ok(response);
+        }
     }
 }

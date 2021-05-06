@@ -1,0 +1,28 @@
+﻿using AppAC.Domain;
+using AppAC.Domain.Contracts;
+using System;
+using System.Collections.Generic;
+
+namespace AppAc.Application
+{
+    public class ConsultarActividadService
+    {
+        private readonly IActividadRepository _actividadRepository;
+
+        public ConsultarActividadService(
+           IActividadRepository actividadRepository
+       )
+        {
+            _actividadRepository = actividadRepository;
+        }
+        public IEnumerable<Actividad> GetAll()
+        {
+            return _actividadRepository.GetAll();
+        }
+        public IEnumerable<Actividad> GetByDocente(string identificacion)
+        {
+            return _actividadRepository.FindBy(a=>a.Responsable.Identificacion==identificacion);
+        }
+    }
+ 
+}

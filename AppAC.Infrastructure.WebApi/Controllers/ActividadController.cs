@@ -48,5 +48,19 @@ namespace AppAC.Infrastructure.WebApi.Controllers
             var response = service.Handle(request);
             return Ok(response);
         }
+        [HttpGet("GetAll")]
+        public IActionResult GetAll()
+        {
+            var service = new ConsultarActividadService(_actividadRepository);
+            var response = service.GetAll();
+            return Ok(response);
+        }
+        [HttpGet("GetByDocente")]
+        public IActionResult GetByDocente(string identificacion)
+        {
+            var service = new ConsultarActividadService(_actividadRepository);
+            var response = service.GetByDocente(identificacion);
+            return Ok(response);
+        }
     }
 }
