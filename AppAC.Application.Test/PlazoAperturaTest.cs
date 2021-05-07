@@ -24,11 +24,8 @@ namespace AppAC.Application.Test
            .Options;
 
             _dbContext = new AppACContext(optionsSqlite);
-            if (!_dbContext.Database.EnsureCreated())
-            {
-                _dbContext.Database.EnsureCreated();
-            }
-
+            _dbContext.Database.EnsureDeleted();
+            _dbContext.Database.EnsureCreated();
             _jefeDptoRepository = new JefeDptoRepository(_dbContext);
             _plazoAperturaService = new PlazoAperturaService(
                 new UnitOfWork(_dbContext),
@@ -39,7 +36,7 @@ namespace AppAC.Application.Test
         }
 
         [Test]
-        public void Test1()
+        public void LaFechaDeInicioNoPuedeSerMayorALaDeFin()
         {
             var fechaInicio = new DateTime(2021, 03, 20);
             var fechaFin = new DateTime(2021, 02, 20);
@@ -49,6 +46,27 @@ namespace AppAC.Application.Test
             var request = new PlazoAperturaRequest("1234",fechaInicio,fechaFin);
             var response = _plazoAperturaService.CrearPlazoApertura(request);
             Assert.AreEqual("La fecha de inicio no puede ser mayor o igual a la fecha de fin", response);
+        }
+        [Test]
+        public void PuedoGuardarPlazoApertura()
+        {
+            var fechaInicio = new DateTime(2021, 02, 20);
+            var fechaFin = new DateTime(2021, 03, 20);
+            var jefeDpto = JefeDptoMother.CreateJefeDpto("1234");
+            _jefeDptoRepository.Add(jefeDpto);
+            _dbContext.SaveChanges();
+            var request = new PlazoAperturaRequest("1234",fechaInicio,fechaFin);
+            var response = _plazoAperturaService.CrearPlazoApertura(request);
+            Assert.AreEqual("El plazo fue correctamente ingresado", response);
+        }
+        [Test]
+        public void NoPuedoGuardarPlazoAperturaSiNoExisteUnJefeDptoCreador()
+        {
+            var fechaInicio = new DateTime(2021, 02, 20);
+            var fechaFin = new DateTime(2021, 03, 20);
+            var request = new PlazoAperturaRequest("1234",fechaInicio,fechaFin);
+            var response = _plazoAperturaService.CrearPlazoApertura(request);
+            Assert.AreEqual("No existe el Jefe de departamento", response);
         }
     }
 }

@@ -109,7 +109,6 @@ namespace AppAc.Application
     }
     public record ItemPlanRequest(int PlanId, string AccionPlaneada_Descripcion,string AccionRealizada_Descripcion, string AccionRealizada_evidencia_Ruta);
     public record ItemPlanUpdateRequest(int Id, string AccionPlaneada_Descripcion,string AccionRealizada_Descripcion, string AccionRealizada_evidencia_Ruta);
-
     public record ItemPlanResponse(string Message, ItemPlan ItemPlan);
 
    
