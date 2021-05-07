@@ -59,6 +59,35 @@ namespace AppAC.Application.Test
             var response = _crearPlanAccionService.Handle(request);
             response.Message.Should().Be("Plan de accion registrado correctamente");
         }
+        [Test]
+        public void NoPuedoCrearPlanDeAccionNoEstaDentroDelPlazoDeApertura()
+        {
+            var actividad = ActividadMother.CreateActividad();
+            var plazo = PlazoAperturaMother.CreatePlazoAperturaVencido("123313");
+            _plazoAperturaRepository.Add(plazo);
+            _actividadRepository.Add(actividad);
+            _dbContext.SaveChanges();
+            var item = new ItemPlanRequest(0,"Se describe aqui","Se describe lo que se hizo","loquesea/dir");
+            var items = new List<ItemPlanRequest>();
+            items.Add(item);
+            var request = new PlanAccionRequest(1,items);
+            var response = _crearPlanAccionService.Handle(request);
+            response.Message.Should().Be("Error: La fecha no esta dentro del plazo establecido por el jefe de departamento");
+        }
+        [Test]
+        public void NoPuedoCrearPlanDeAccionSiNoExisteElPlazoDeApertura()
+        {
+            var actividad = ActividadMother.CreateActividad();
+            _actividadRepository.Add(actividad);
+            _dbContext.SaveChanges();
+            var item = new ItemPlanRequest(0,"Se describe aqui","Se describe lo que se hizo","loquesea/dir");
+            var items = new List<ItemPlanRequest>();
+            items.Add(item);
+            var request = new PlanAccionRequest(1,items);
+            var response = _crearPlanAccionService.Handle(request);
+            response.Message.Should().Be("Error: No se encontro ningun plazo de apertura");
+        }
+
         
         [Test]
         public void NoPuedoCrearPlanDeAccionSiNoExisteUnaActividad()

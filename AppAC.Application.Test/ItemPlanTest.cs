@@ -44,7 +44,7 @@ namespace AppAC.Application.Test
         }
 
         [Test]
-        public void PuedoCrearPlanDeAccion()
+        public void PuedoCrearItemPlanDeAccion()
         {
 
             var plan=PlanAccionMother.CreatePlanAccion();
@@ -55,6 +55,30 @@ namespace AppAC.Application.Test
             var request = new ItemPlanRequest(1,"Se describe aqui","Se describe lo que se hizo","loquesea/dir");
             var response = _itemPlanService.RegistrarItem(request);
             response.Message.Should().Be("Item registrado correctamente");
+        }
+        [Test]
+        public void NoPuedoCrearItemPlanSiNoExistePlanAccion()
+        {
+
+            var plazo = PlazoAperturaMother.CreatePlazoApertura("123313");
+            _plazoAperturaRepository.Add(plazo);
+            _dbContext.SaveChanges();
+            var request = new ItemPlanRequest(1,"Se describe aqui","Se describe lo que se hizo","loquesea/dir");
+            var response = _itemPlanService.RegistrarItem(request);
+            response.Message.Should().Be("No se encontró el plan de acción");
+        }
+        [Test]
+        public void NoPuedoGuardarItemPlanSiNoEstaDentroDelPlazoDeAperturaEstablecido()
+        {
+
+            var plan=PlanAccionMother.CreatePlanAccion();
+            var plazo = PlazoAperturaMother.CreatePlazoAperturaVencido("123313");
+            _plazoAperturaRepository.Add(plazo);
+            _planAccionRepository.Add(plan);
+            _dbContext.SaveChanges();
+            var request = new ItemPlanRequest(1,"Se describe aqui","Se describe lo que se hizo","loquesea/dir");
+            var response = _itemPlanService.RegistrarItem(request);
+            response.Message.Should().Be("Error: La fecha no esta dentro del plazo establecido por el jefe de departamento");
         }
         [Test]
         public void PuedoEliminarItemPlan()
@@ -84,14 +108,41 @@ namespace AppAC.Application.Test
         [Test]
         public void PuedoModificarItem()
         {
-            var plan=PlanAccionMother.CreatePlanAccion();
+            var plan = PlanAccionMother.CreatePlanAccion();
             var plazo = PlazoAperturaMother.CreatePlazoApertura("123313");
+            _plazoAperturaRepository.Add(plazo);
+            _planAccionRepository.Add(plan);
+            _dbContext.SaveChanges();
+            var request = new ItemPlanUpdateRequest(1, "Se describe aqui dsadasdad", "Se describe lo que se hizo",
+                "loquesea/dir");
+            var response = _itemPlanService.ModificarItem(request);
+            response.Message.Should().Be("Se actualizó el item correctamente");
+        }
+
+        [Test]
+        public void NoPuedoModificarItemSiNoEstaDentroDelPlazoDeAperturaEstablecido()
+        {
+            var plan=PlanAccionMother.CreatePlanAccion();
+            var plazo = PlazoAperturaMother.CreatePlazoAperturaVencido("123313");
             _plazoAperturaRepository.Add(plazo);
             _planAccionRepository.Add(plan);
             _dbContext.SaveChanges();
             var request = new ItemPlanUpdateRequest(1,"Se describe aqui dsadasdad","Se describe lo que se hizo","loquesea/dir");
             var response = _itemPlanService.ModificarItem(request);
-            response.Message.Should().Be("Se actualizó el item correctamente");
+            response.Message.Should().Be("Error: La fecha no esta dentro del plazo establecido por el jefe de departamento");
+        }
+        [Test]
+        public void NoPuedoEliminarItemSiNoEstaDentroDelPlazoDeAperturaEstablecido()
+        {
+            var plan=PlanAccionMother.CreatePlanAccion();
+            _planAccionRepository.Add(plan);
+            var plazo = PlazoAperturaMother.CreatePlazoAperturaVencido("123313");
+            _plazoAperturaRepository.Add(plazo);
+            _dbContext.SaveChanges();
+            var request = new ItemPlanRequest(1,"Se describe aqui","Se describe lo que se hizo","loquesea/dir");
+            _itemPlanService.RegistrarItem(request);
+            var response = _itemPlanService.EliminarItem(1);
+            response.Message.Should().Be("Error: La fecha no esta dentro del plazo establecido por el jefe de departamento");
         }
     }
 }

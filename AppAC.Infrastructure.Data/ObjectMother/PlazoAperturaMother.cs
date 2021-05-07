@@ -18,6 +18,13 @@ namespace AppAC.Infrastructure.Data.ObjectMother
             plazo.EstablecerPlazo(DateTime.Now.AddDays(-1), DateTime.Now.AddDays(3));
             return plazo;
         }
+        public static PlazoApertura CreatePlazoAperturaVencido(string identificacion)
+        {
+            var jefe = JefeDptoMother.CreateJefeDpto(identificacion);
+            var plazo =new PlazoApertura(jefe);
+            plazo.EstablecerPlazo(DateTime.Now.AddDays(-5), DateTime.Now.AddDays(-1));
+            return plazo;
+        }
     }
    
 }
