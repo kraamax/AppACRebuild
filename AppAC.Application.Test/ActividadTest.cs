@@ -55,5 +55,44 @@ namespace AppAC.Application.Test
             var response = _asignarActividadService.Handle(request);
             response.Message.Should().Be("Se asignaron 10 al docente Sebastian");
         }
+        [Test]
+        public void NoPuedoAsignarActividadAUnDocenteSiNoExiste()
+        {
+
+            var jefeDpto = JefeDptoMother.CreateJefeDpto("11223334");
+            _usuarioRepository.Add(jefeDpto);
+            var tipo = new TipoActividad("Investigaci�n");
+            _tipoActividadRepository.Add(tipo);
+            _dbContext.SaveChanges();
+            var request = new ActividadRequest(1 ,"11223334","103523423", 10);
+            var response = _asignarActividadService.Handle(request);
+            response.Message.Should().Be("No se encontró el docente");
+        }
+        [Test]
+        public void NoPuedoAsignarActividadAUnDocenteSiNoExisteElJefeDptoAsignador()
+        {
+
+            var docente = DocenteMother.CreateDocente("103523423");
+            _usuarioRepository.Add(docente);
+            var tipo = new TipoActividad("Investigaci�n");
+            _tipoActividadRepository.Add(tipo);
+            _dbContext.SaveChanges();
+            var request = new ActividadRequest(1 ,"11223334","103523423", 10);
+            var response = _asignarActividadService.Handle(request);
+            response.Message.Should().Be("No se encontró el Jefe de departamento");
+        }
+        [Test]
+        public void NoPuedoAsignarActividadAUnDocenteSiNoExisteElTipoDeActividad()
+        {
+
+            var docente = DocenteMother.CreateDocente("103523423");
+            var jefeDpto = JefeDptoMother.CreateJefeDpto("11223334");
+            _usuarioRepository.Add(jefeDpto);
+            _usuarioRepository.Add(docente);
+            _dbContext.SaveChanges();
+            var request = new ActividadRequest(100 ,"11223334","103523423", 10);
+            var response = _asignarActividadService.Handle(request);
+            response.Message.Should().Be("No existe ese tipo de actividad");
+        }
     }
 }

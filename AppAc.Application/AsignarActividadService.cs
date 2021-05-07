@@ -29,7 +29,11 @@ namespace AppAc.Application
         public ActividadResponse Handle(ActividadRequest request)
         {
             var tipoActividad = _tipoActividadRepository.Find(request.TipoActividadId);
+            if (tipoActividad == null)
+                return new ActividadResponse("No existe ese tipo de actividad", null);
             var asignador = _usuarioRepository.FindJefeDpto(request.IdentificacionAsignador);
+            if(asignador==null)
+                return new ActividadResponse("No se encontró el Jefe de departamento", null);
             var responsable =_usuarioRepository.FindDocente(request.IdentificacionResponsable);
             if (responsable == null)
                 return new ActividadResponse("No se encontró el docente", null);
