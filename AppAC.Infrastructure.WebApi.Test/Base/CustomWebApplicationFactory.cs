@@ -10,7 +10,7 @@ namespace AppAC.Infrastructure.WebApi.Test.Base
     public class CustomWebApplicationFactory<TStartup>
         : WebApplicationFactory<TStartup> where TStartup : class
     {
-        private readonly string _connectionString=@"Data Source=C:\sqlite\AppACDataBaseTest.db";
+        private readonly string _connectionString=@"Data Source=C:\sqlite\AppACDataBaseTestWeb.db";
         public AppACContext CreateContext() 
         {
             var builder = new DbContextOptionsBuilder<AppACContext>().UseSqlite(_connectionString);
@@ -26,7 +26,6 @@ namespace AppAC.Infrastructure.WebApi.Test.Base
                          typeof(DbContextOptions<AppACContext>));
 
                 services.Remove(descriptor);
-
                 services.AddDbContext<AppACContext>(options =>
                 {
                     options.UseSqlite(_connectionString);
@@ -40,9 +39,10 @@ namespace AppAC.Infrastructure.WebApi.Test.Base
                     var scopedServices = scope.ServiceProvider;
                     var db = scopedServices.GetRequiredService<AppACContext>();
                     db.Database.EnsureDeleted();
-                    db.Database.EnsureCreated();
+                    db.Database.EnsureCreatedAsync();
                     //invocar clase que inicilice los datos semillas. 
                 }
+                
                 #endregion 
             });
         }
