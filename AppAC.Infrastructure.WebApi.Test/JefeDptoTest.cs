@@ -16,10 +16,18 @@ namespace AppAC.Infrastructure.WebApi.Test
 {
      public class JefeDptoTest : IClassFixture<CustomWebApplicationFactory<Startup>>
     {
-        private readonly CustomWebApplicationFactory<Startup> _factory;
-        public JefeDptoTest(CustomWebApplicationFactory<Startup> factory)
+        private readonly HttpClient _client;
+        private readonly CustomWebApplicationFactory<Startup> 
+            _factory;
+
+        public JefeDptoTest(
+            CustomWebApplicationFactory<Startup> factory)
         {
             _factory = factory;
+            _client = factory.CreateClient(new WebApplicationFactoryClientOptions
+            {
+                AllowAutoRedirect = false
+            });
         }
         [Fact]
         public async Task PuedeCrearJefeDptoTestAsync()
@@ -34,8 +42,7 @@ namespace AppAC.Infrastructure.WebApi.Test
             );
             var jsonObject = JsonConvert.SerializeObject(request);
             var content = new StringContent(jsonObject, Encoding.UTF8, "application/json");
-            var httpClient = _factory.CreateClient();
-            var responseHttp = await httpClient.PostAsync("api/jefeDpto", content);
+            var responseHttp = await _client.PostAsync("api/jefeDpto", content);
             responseHttp.StatusCode.Should().Be(HttpStatusCode.OK);
             var respuesta = await responseHttp.Content.ReadAsStringAsync();
             respuesta.Should().Contain("Se registró correctamente el Jefe de departamento Sebastian");

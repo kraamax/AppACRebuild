@@ -16,10 +16,18 @@ namespace AppAC.Infrastructure.WebApi.Test
 {
      public class DocenteTest : IClassFixture<CustomWebApplicationFactory<Startup>>
     {
-        private readonly CustomWebApplicationFactory<Startup> _factory;
-        public DocenteTest(CustomWebApplicationFactory<Startup> factory)
+        private readonly HttpClient _client;
+        private readonly CustomWebApplicationFactory<Startup> 
+            _factory;
+
+        public DocenteTest(
+            CustomWebApplicationFactory<Startup> factory)
         {
             _factory = factory;
+            _client = factory.CreateClient(new WebApplicationFactoryClientOptions
+            {
+                AllowAutoRedirect = false
+            });
         }
         [Fact]
         public async Task PuedeCrearDocenteTestAsync()

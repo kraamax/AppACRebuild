@@ -19,15 +19,23 @@ namespace AppAC.Infrastructure.WebApi.Test
 {
      public class ActividadTest : IClassFixture<CustomWebApplicationFactory<Startup>>
     {
-        private readonly CustomWebApplicationFactory<Startup> _factory;
-        public ActividadTest(CustomWebApplicationFactory<Startup> factory)
+        private readonly HttpClient _client;
+        private readonly CustomWebApplicationFactory<Startup> 
+            _factory;
+
+        public ActividadTest(
+            CustomWebApplicationFactory<Startup> factory)
         {
             _factory = factory;
+            _client = factory.CreateClient(new WebApplicationFactoryClientOptions
+            {
+                AllowAutoRedirect = false
+            });
         }
         [Fact]
         public async Task PuedeCrearJefeDptoTestAsync()
         {
-            var httpClient = _factory.CreateClient();
+            // var httpClient = _factory.CreateClient();
             var context = _factory.CreateContext();
             var jefeDptoToAdd = JefeDptoMother.CreateJefeDpto("123454a");
             var docenteToAdd = DocenteMother.CreateDocente("1254b");
@@ -55,7 +63,7 @@ namespace AppAC.Infrastructure.WebApi.Test
             
             var jsonObject = JsonConvert.SerializeObject(request);
             var content = new StringContent(jsonObject, Encoding.UTF8, "application/json");
-            var responseHttp = await httpClient.PostAsync("api/Actividad", content);
+            var responseHttp = await _client.PostAsync("api/Actividad", content);
             responseHttp.StatusCode.Should().Be(HttpStatusCode.OK);
             var respuesta = await responseHttp.Content.ReadAsStringAsync();
             respuesta.Should().Contain("Se asignaron 10 al docente Sebastian");
