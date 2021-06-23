@@ -34,7 +34,7 @@ namespace AppAC.Infrastructure.WebApi.Test
             });
         }
         [Fact]
-        public async Task PuedeCrearJefeDptoTestAsync()
+        public async Task PuedeCrearPlanAccionTestAsync()
         {
             // var httpClient = _factory.CreateClient();
             var context = _factory.CreateContext();

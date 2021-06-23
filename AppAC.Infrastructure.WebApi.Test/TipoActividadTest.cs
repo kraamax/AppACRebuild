@@ -31,7 +31,7 @@ namespace AppAC.Infrastructure.WebApi.Test
             });
         }
         [Fact]
-        public async Task PuedeCrearJefeDptoTestAsync()
+        public async Task PuedeCrearTipoActividadTestAsync()
         {
             var request = new TipoActividadRequest(
                 "Ejemplo" 

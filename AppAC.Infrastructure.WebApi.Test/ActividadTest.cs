@@ -33,9 +33,8 @@ namespace AppAC.Infrastructure.WebApi.Test
             });
         }
         [Fact]
-        public async Task PuedeCrearJefeDptoTestAsync()
+        public async Task PuedeCrearActividadTestAsync()
         {
-            // var httpClient = _factory.CreateClient();
             var context = _factory.CreateContext();
             var jefeDptoToAdd = JefeDptoMother.CreateJefeDpto("123454a");
             var docenteToAdd = DocenteMother.CreateDocente("1254b");
