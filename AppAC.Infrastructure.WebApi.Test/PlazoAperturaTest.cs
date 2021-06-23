@@ -28,7 +28,7 @@ namespace AppAC.Infrastructure.WebApi.Test
         {
             #region Registro jefeDpto
                 var request = new JefeDptoRequest(
-                    "123adf", 
+                    "123fff", 
                     "Sebastian",
                     "Oñate",
                     "ssonate@unicesar.edu.co",
@@ -43,7 +43,7 @@ namespace AppAC.Infrastructure.WebApi.Test
                 var respuesta = await responseHttp.Content.ReadAsStringAsync();
                 respuesta.Should().Contain("Se registró correctamente el Jefe de departamento Sebastian");
                 var context = _factory.CreateContext();
-                var jefeDpto = context.JefesDptos.FirstOrDefault(t => t.Identificacion == "123adf");
+                var jefeDpto = context.JefesDptos.FirstOrDefault(t => t.Identificacion == "123fff");
                 jefeDpto.Should().NotBeNull();
             #endregion
 
@@ -51,7 +51,7 @@ namespace AppAC.Infrastructure.WebApi.Test
             var fechaInicio = new DateTime(2021, 02, 20);
             var fechaFin = new DateTime(2021, 03, 20);
             var plazoRequest = new PlazoAperturaRequest(
-                "123adf", 
+                "123fff", 
                 fechaInicio,
                 fechaFin
             );
@@ -61,7 +61,7 @@ namespace AppAC.Infrastructure.WebApi.Test
             responseHttp.StatusCode.Should().Be(HttpStatusCode.OK);
             respuesta = await responseHttp.Content.ReadAsStringAsync();
             respuesta.Should().Be("El plazo fue correctamente ingresado");
-            var plazoApertura = context.PlazosApertura.FirstOrDefault(t => t.Creador.Identificacion == "123adf");
+            var plazoApertura = context.PlazosApertura.FirstOrDefault(t => t.Creador.Identificacion == "123fff");
             plazoApertura.Should().NotBeNull();
             
 

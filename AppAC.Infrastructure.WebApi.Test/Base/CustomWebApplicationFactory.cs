@@ -38,7 +38,7 @@ namespace AppAC.Infrastructure.WebApi.Test.Base
                 {
                     var scopedServices = scope.ServiceProvider;
                     var db = scopedServices.GetRequiredService<AppACContext>();
-                    db.Database.EnsureDeleted();
+                    db.Database.EnsureDeletedAsync();
                     db.Database.EnsureCreatedAsync();
                     //invocar clase que inicilice los datos semillas. 
                 }

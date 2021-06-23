@@ -25,7 +25,7 @@ namespace AppAC.Infrastructure.WebApi.Test
         public async Task PuedeCrearDocenteTestAsync()
         {
             var request = new DocenteRequest(
-                "123adf", 
+                "123zzz", 
                 "Sebastian",
                 "Oñate",
                 "ssonate@unicesar.edu.co",
@@ -40,7 +40,7 @@ namespace AppAC.Infrastructure.WebApi.Test
             var respuesta = await responseHttp.Content.ReadAsStringAsync();
             respuesta.Should().Contain("Se registró correctamente el docente Sebastian");
             var context = _factory.CreateContext();
-            var docente123adf = context.Docentes.FirstOrDefault(t => t.Identificacion == "123adf");
+            var docente123adf = context.Docentes.FirstOrDefault(t => t.Identificacion == "123zzz");
             docente123adf.Should().NotBeNull();
         }
 
