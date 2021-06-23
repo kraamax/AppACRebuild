@@ -1,8 +1,17 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=6A81F6AE_002DB946_002D4AB3_002D803E_002D1B9DADA500D2_002Ff_003AUsuarioService_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
+	<s:String x:Key="/Default/Environment/Highlighting/HighlightingSourceSnapshotLocation/@EntryValue">C:\Users\Sebastian\AppData\Local\JetBrains\Rider2021.1\resharper-host\temp\Rider\vAny\CoverageData\_AppAC.Domain.10463045\Snapshot\snapshot.utdcvr</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=e326ee1b_002D512d_002D42a7_002Db85b_002D8bd9edd50084/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="SendEmailTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Or&gt;&#xD;
     &lt;Project Location="C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Application.Test" Presentation="&amp;lt;AppAC.Application.Test&amp;gt;" /&gt;&#xD;
     &lt;Project Location="C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Domain.Test" Presentation="&amp;lt;AppAC.Domain.Test&amp;gt;" /&gt;&#xD;
+    &lt;TestAncestor&gt;&#xD;
+      &lt;TestId&gt;xUnit::76FAC1FD-2099-4507-A391-5844A679C5C0::net5.0::AppAC.Infrastructure.WebApi.Test.CuentaBancariaTest.PuedeCrearDocenteTestAsync&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;xUnit::76FAC1FD-2099-4507-A391-5844A679C5C0::net5.0::AppAC.Infrastructure.WebApi.Test.DocenteTest.PuedeCrearDocenteTestAsync&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;xUnit::76FAC1FD-2099-4507-A391-5844A679C5C0::net5.0::AppAC.Infrastructure.WebApi.Test.JefeDptoTest.PuedeCrearJefeDptoTestAsync&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;xUnit::76FAC1FD-2099-4507-A391-5844A679C5C0::net5.0::AppAC.Infrastructure.WebApi.Test.PlazoAperturaTest.PuedeCrearPlazoAperturaTestAsync&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;xUnit::76FAC1FD-2099-4507-A391-5844A679C5C0::net5.0::AppAC.Infrastructure.WebApi.Test.TipoActividadTest.PuedeCrearJefeDptoTestAsync&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;xUnit::76FAC1FD-2099-4507-A391-5844A679C5C0::net5.0::AppAC.Infrastructure.WebApi.Test.ActividadTest.PuedeCrearJefeDptoTestAsync&lt;/TestId&gt;&#xD;
+    &lt;/TestAncestor&gt;&#xD;
   &lt;/Or&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

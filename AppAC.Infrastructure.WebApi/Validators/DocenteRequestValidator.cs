@@ -8,18 +8,24 @@ namespace AppAC.Infrastructure.WebApi.Validators
         public DocenteRequestValidator()
         {
             RuleFor(x => x.Identificacion)
-                .NotEmpty();
+                .NotEmpty()
+                .NotNull();
             RuleFor(x => x.Nombres)
-                .NotEmpty();
+                .NotEmpty()
+                .NotNull();
             RuleFor(x => x.Apellidos)
-                .NotEmpty();
+                .NotEmpty()
+                .NotNull();
             RuleFor(x => x.departamentoId)
-                .NotEmpty();
+                .NotEmpty()
+                .NotNull();
             RuleFor(x => x.Email)
                 .NotEmpty()
-                .EmailAddress();
+                .EmailAddress()
+                .NotNull();
             RuleFor(x => x.Sexo)
-                .NotEmpty();
+                .NotEmpty()
+                .NotNull();
         }
     }
 }

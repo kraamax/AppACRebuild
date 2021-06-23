@@ -43,6 +43,10 @@ namespace AppAC.Application
             _unitOfWork.Commit();
             return new DepartamentoResponse($"Departamento {departamento.NombreDpto} guardado");
         }
+        public IEnumerable<Departamento> GetAll()
+        {
+            return _departamentoRepository.GetAll();
+        }
     }
     public record DepartamentoRequest(string Codigo, string Nombre);
     public record DepartamentoResponse(string Mensaje);

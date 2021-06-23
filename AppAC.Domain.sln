@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppAC.Infrastructure.System
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppAC.Infrastructure.WebApi", "AppAC.Infrastructure.WebApi\AppAC.Infrastructure.WebApi.csproj", "{141B50A8-2D14-4DDA-BAEB-A2FE254A9B77}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppAC.Infrastructure.WebApi.Test", "AppAC.Infrastructure.WebApi.Test\AppAC.Infrastructure.WebApi.Test.csproj", "{76FAC1FD-2099-4507-A391-5844A679C5C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{141B50A8-2D14-4DDA-BAEB-A2FE254A9B77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{141B50A8-2D14-4DDA-BAEB-A2FE254A9B77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{141B50A8-2D14-4DDA-BAEB-A2FE254A9B77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76FAC1FD-2099-4507-A391-5844A679C5C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76FAC1FD-2099-4507-A391-5844A679C5C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76FAC1FD-2099-4507-A391-5844A679C5C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76FAC1FD-2099-4507-A391-5844A679C5C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
