@@ -8,6 +8,7 @@ namespace AppAC.Infrastructure.WebApi.Validators
         public TipoActividadRequestValidator()
         {
             RuleFor(x=>x.Nombre)
+                .NotNull()
                 .NotEmpty()
                 ;
         }

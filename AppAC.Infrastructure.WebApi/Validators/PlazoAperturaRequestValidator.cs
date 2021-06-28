@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using AppAC.Application;
 using FluentValidation;
 
@@ -11,9 +12,13 @@ namespace AppAC.Infrastructure.WebApi.Validators
             RuleFor(x => x.FechaInicio)
                 .Must(x => !DateTimeIsEmpty(x)).WithMessage("No debe esta vacio")
                 .Must(x=>BeAValidDate(x)).WithMessage("Debe ser valida")
+                .NotEmpty()
                 .NotNull();
             RuleFor(x => x.FechaFin)
-                .NotEmpty();
+                .Must(x => !DateTimeIsEmpty(x)).WithMessage("No debe esta vacio")
+                .Must(x=>BeAValidDate(x)).WithMessage("Debe ser valida")
+                .NotEmpty()
+                .NotNull();
         }
         //new Date(stringValue).toISOString()
         private bool DateTimeIsEmpty(DateTime dat)

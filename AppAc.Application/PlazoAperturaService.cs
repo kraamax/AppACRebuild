@@ -26,11 +26,11 @@ namespace AppAC.Application
             _emailServer = emailServer;
             _jefeDptoRepository = jefeDptoRepository;
         }
-        public string CrearPlazoApertura(PlazoAperturaRequest request)
+        public PlazoAperturaResponse CrearPlazoApertura(PlazoAperturaRequest request)
         {
             var jefeDpto =_jefeDptoRepository.FindFirstOrDefault(c => c.Identificacion == request.IdentificacionCreador);
             if (jefeDpto == null)
-                return "No existe el Jefe de departamento";
+                return new PlazoAperturaResponse("No existe el Jefe de departamento","error");
             var plazoApertura = new PlazoApertura(jefeDpto);
             var response = plazoApertura.EstablecerPlazo(request.FechaInicio, request.FechaFin);
             if (response.Equals("El plazo fue correctamente ingresado"))
@@ -44,8 +44,10 @@ namespace AppAC.Application
                 }
                 _plazoAperturaRepository.Add(plazoApertura);
                 _unitOfWork.Commit();
+                return new PlazoAperturaResponse(response,"Ok");
+
             }
-            return response;
+            return new PlazoAperturaResponse(response,"Info");
         }
         public IEnumerable<PlazoApertura> GetAll()
         {
@@ -55,9 +57,15 @@ namespace AppAC.Application
         {
             return _plazoAperturaRepository.FindBy(c=>c.Creador.Identificacion==identificacion);
         }
+
+        public PlazoApertura GetCurrentByJefeDpto(string identificacion)
+        {
+            return _plazoAperturaRepository.FindFirstOrDefault(c=>c.Creador.Identificacion==identificacion && c.Activo == true);
+        }
     }
     
 
     public record PlazoAperturaRequest(string IdentificacionCreador, DateTime FechaInicio, DateTime FechaFin);
 
+    public record PlazoAperturaResponse(string Message, string MessageType);
 }

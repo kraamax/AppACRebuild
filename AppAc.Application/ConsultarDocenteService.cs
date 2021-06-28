@@ -24,6 +24,10 @@ namespace AppAC.Application
         {
             return _docenteRepository.FindDocente(identificion);
         }
+        public IEnumerable<Docente> GetByDepartamento( int dptoId )
+        {
+            return _docenteRepository.FindBy(x=>x.Departamento.Id==dptoId);
+        }
     }
 
 

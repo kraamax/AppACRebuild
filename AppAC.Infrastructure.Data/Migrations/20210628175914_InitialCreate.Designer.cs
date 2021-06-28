@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AppAC.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(AppACContext))]
-    [Migration("20210506160621_InitialCreate")]
+    [Migration("20210628175914_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -210,6 +210,9 @@ namespace AppAC.Infrastructure.Data.Migrations
 
                     b.HasIndex("DepartamentoId");
 
+                    b.HasIndex("Email")
+                        .IsUnique();
+
                     b.HasDiscriminator().HasValue("Docente");
                 });
 
@@ -221,6 +224,9 @@ namespace AppAC.Infrastructure.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasIndex("DepartamentoId");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
 
                     b.HasDiscriminator().HasValue("JefeDpto");
                 });

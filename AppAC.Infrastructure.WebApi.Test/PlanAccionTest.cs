@@ -39,11 +39,15 @@ namespace AppAC.Infrastructure.WebApi.Test
             // var httpClient = _factory.CreateClient();
             var context = _factory.CreateContext();
             var actividadToAdd = ActividadMother.CreateActividad();
-            var plazoToAdd = PlazoAperturaMother.CreatePlazoApertura("123313");
-          
             context.Actividades.Add(actividadToAdd);
-            context.PlazosApertura.Add(plazoToAdd);
             context.SaveChanges();
+            
+            var plazoToAdd = PlazoAperturaMother.CreatePlazoApertura("123313");
+            var plazoRequest = new PlazoAperturaRequest("123313", plazoToAdd.FechaInicio, plazoToAdd.FechaFin);
+            var jsonObject = JsonConvert.SerializeObject(plazoRequest);
+            var content = new StringContent(jsonObject, Encoding.UTF8, "application/json");
+            var responseHttp = await _client.PostAsync("api/PlazoApertura", content);
+            responseHttp.StatusCode.Should().Be(HttpStatusCode.OK);
             
             var item = new ItemPlanRequest(0,"Se describe aqui","Se describe lo que se hizo","loquesea/dir");
             var items = new List<ItemPlanRequest>();
@@ -53,9 +57,9 @@ namespace AppAC.Infrastructure.WebApi.Test
                 items
             );
             
-            var jsonObject = JsonConvert.SerializeObject(request);
-            var content = new StringContent(jsonObject, Encoding.UTF8, "application/json");
-            var responseHttp = await _client.PostAsync("api/PlanAccion", content);
+            jsonObject = JsonConvert.SerializeObject(request);
+            content = new StringContent(jsonObject, Encoding.UTF8, "application/json");
+            responseHttp = await _client.PostAsync("api/PlanAccion", content);
             responseHttp.StatusCode.Should().Be(HttpStatusCode.OK);
             var respuesta = await responseHttp.Content.ReadAsStringAsync();
             respuesta.Should().Contain("Plan de accion registrado correctamente");

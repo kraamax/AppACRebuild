@@ -74,7 +74,7 @@ namespace AppAC.Domain.Test
             var tipoActividad = new TipoActividad("Asesoria");
             var actividad = new Actividad(tipoActividad,asignador);
             var resultado = actividad.Asignar(docente,5);
-            var esperado = "Se asignaron 5 al docente Juan";
+            var esperado = "Se asignaron 5 horas de Asesoria al docente Juan";
             Assert.AreEqual(esperado, resultado);
         }
         /*

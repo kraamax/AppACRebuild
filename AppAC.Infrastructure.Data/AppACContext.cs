@@ -28,6 +28,12 @@ namespace AppAC.Infrastructure.Data
             modelBuilder.Entity<Usuario>(c=> {
                 c.HasKey(c => c.Id);
             });
+            modelBuilder.Entity<Docente>(c=> {
+                c.HasIndex(u => u.Email).IsUnique();
+            });
+            modelBuilder.Entity<JefeDpto>(c=> {
+                c.HasIndex(u => u.Email).IsUnique();
+            });
             modelBuilder.Entity<Actividad>().HasKey(c => c.Id);
             modelBuilder.Entity<TipoActividad>(c=> {
                 c.HasKey(c => c.Id);

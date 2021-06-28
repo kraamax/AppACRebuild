@@ -21,7 +21,11 @@ namespace AppAc.Application
         }
         public IEnumerable<Actividad> GetByDocente(string identificacion)
         {
-            return _actividadRepository.FindBy(a=>a.Responsable.Identificacion==identificacion);
+            return _actividadRepository.FindByDocente(identificacion);
+        }
+        public Actividad Get(int id)
+        {
+            return _actividadRepository.Find(id);
         }
     }
  

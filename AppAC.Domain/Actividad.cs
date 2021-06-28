@@ -39,9 +39,20 @@ namespace AppAC.Domain
             {
                 return "Las horas asignadas no pueden ser mayor a veinte";
             }
+
+            Estado = "Asignada";
             Responsable = docente;
             HorasAsignadas = horasAsignadas;
-            return $"Se asignaron {HorasAsignadas} al docente {docente.Nombres}";
+            return $"Se asignaron {HorasAsignadas} horas de {TipoActividad.NombreActividad} al docente {docente.Nombres}";
         }
+        public void ChangeToPlaneada()
+        {
+            Estado = "Planeada";
+        }
+        public void ChangeToEvidenciada()
+        {
+            Estado = "Evidenciada";
+        }
+       
     }
 }

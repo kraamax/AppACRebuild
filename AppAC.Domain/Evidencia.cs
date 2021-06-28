@@ -14,7 +14,7 @@ namespace AppAC.Domain
         public DateTime FechaCarga { get; private set; }
         public IReadOnlyList<string> CanDeliver(string ruta) {
             var errors = new List<string>();
-            if (string.IsNullOrWhiteSpace(ruta))
+            if (ruta==null)
                 errors.Add("Debe ingresar una ruta");
 
             return errors;

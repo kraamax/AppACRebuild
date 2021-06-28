@@ -9,5 +9,6 @@ namespace AppAC.Domain.Contracts
 {
     public interface IJefeDptoRepository: IGenericRepository<JefeDpto>
     {
+        JefeDpto FindByIdentificacion(string identificacion);
     }
 }

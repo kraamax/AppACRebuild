@@ -47,7 +47,14 @@ namespace AppAC.Infrastructure.WebApi.Controllers
         public IActionResult ConsultarPlanAccion(int id)
         {
             var service = new ConsultarPlanAccionService(_planAccionRepository);
-            var response = service.Handle(id);
+            var response = service.GetPlan(id);
+            return Ok(response);
+        }
+        [HttpGet("GetByActividad/{actividadId}")]
+        public IActionResult GetByActividad(int actividadId)
+        {
+            var service = new ConsultarPlanAccionService(_planAccionRepository);
+            var response = service.GetByActividad(actividadId);
             return Ok(response);
         }
     }

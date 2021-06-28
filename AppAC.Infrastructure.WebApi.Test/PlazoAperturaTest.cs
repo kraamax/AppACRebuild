@@ -67,11 +67,10 @@ namespace AppAC.Infrastructure.WebApi.Test
             responseHttp = await _client.PostAsync("api/PlazoApertura", content);
             responseHttp.StatusCode.Should().Be(HttpStatusCode.OK);
             respuesta = await responseHttp.Content.ReadAsStringAsync();
-            respuesta.Should().Be("El plazo fue correctamente ingresado");
+            respuesta.Should().Contain("El plazo fue correctamente ingresado");
             var plazoApertura = context.PlazosApertura.FirstOrDefault(t => t.Creador.Identificacion == "123fff");
             plazoApertura.Should().NotBeNull();
             
-
             #endregion
         }
 

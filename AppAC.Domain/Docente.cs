@@ -49,6 +49,8 @@ namespace AppAC.Domain
             Email = email;
             Sexo = sexo;
             Departamento = departamento;
+            UserName = email;
+            Password = identificacion;
         }
 
     }

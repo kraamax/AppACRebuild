@@ -9,8 +9,11 @@ namespace AppAC.Infrastructure.WebApi.Validators
         public PlanAccionRequestValidator()
         {
             RuleFor(x=>x.ActividadId)
+                .NotNull()
                 .NotEmpty();
-            RuleFor(x => x.Items).NotEmpty();
+            RuleFor(x => x.Items)
+                .NotNull()
+                .NotEmpty();
         }
     }
 }

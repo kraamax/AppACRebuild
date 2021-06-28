@@ -16,10 +16,12 @@ namespace AppAC.Infrastructure.Data
         {
         }
 
-        public JefeDpto FindJefeDpto(string identificacion)
+       
+
+        public JefeDpto FindByIdentificacion(string identificacion)
         {
             return _db.Set<JefeDpto>().Include(d => d.Departamento)
-                           .FirstOrDefault(d => d.Identificacion == identificacion);
+                .FirstOrDefault(d => d.Identificacion == identificacion);
         }
     }
 }

@@ -208,6 +208,9 @@ namespace AppAC.Infrastructure.Data.Migrations
 
                     b.HasIndex("DepartamentoId");
 
+                    b.HasIndex("Email")
+                        .IsUnique();
+
                     b.HasDiscriminator().HasValue("Docente");
                 });
 
@@ -219,6 +222,9 @@ namespace AppAC.Infrastructure.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasIndex("DepartamentoId");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
 
                     b.HasDiscriminator().HasValue("JefeDpto");
                 });

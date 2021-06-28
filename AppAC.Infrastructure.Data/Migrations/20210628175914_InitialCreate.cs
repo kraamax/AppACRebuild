@@ -213,6 +213,12 @@ namespace AppAC.Infrastructure.Data.Migrations
                 name: "IX_Usuarios_Docente_DepartamentoId",
                 table: "Usuarios",
                 column: "Docente_DepartamentoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Usuarios_Email",
+                table: "Usuarios",
+                column: "Email",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

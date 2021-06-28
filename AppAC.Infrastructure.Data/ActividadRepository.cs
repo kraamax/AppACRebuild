@@ -21,8 +21,15 @@ namespace AppAC.Infrastructure.Data
             return _db.Set<Actividad>()
                 .Include(c=>c.Responsable)
                 .Include(c=>c.Asignador)
+                .Include(c=>c.TipoActividad)
                 .FirstOrDefault(c => c.Id == id);
         }
 
+        public IEnumerable<Actividad> FindByDocente(string identificacion)
+        {
+            return _db.Set<Actividad>()
+                .Include(c=>c.TipoActividad)
+                .Where(c => c.Responsable.Identificacion == identificacion);
+        }
     }
 }

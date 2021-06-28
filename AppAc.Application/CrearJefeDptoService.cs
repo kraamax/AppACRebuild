@@ -26,9 +26,11 @@ namespace AppAC.Application
 
         public JefeDptoResponse Handle(JefeDptoRequest request)
         {
+            if (_jefeDptoRepository.FindByIdentificacion(request.Identificacion) != null)
+                return new JefeDptoResponse("Ya existe un JefeDpto con esa identificacion","Error");
             var departamento = _departamentoRepository.Find(request.departamentoId);
             if (departamento == null)
-                return new JefeDptoResponse("Se debe asignar un departamento al Jefe de departamento");
+                return new JefeDptoResponse("Se debe asignar un departamento al Jefe de departamento","Error");
 
             var jefeDpto = new JefeDpto();
             var errors = jefeDpto.CanDeliver(request.Identificacion,
@@ -40,7 +42,7 @@ namespace AppAC.Application
             if (errors.Any())
             {
                 var result = String.Join(", ", errors.ToArray());
-                return new JefeDptoResponse(result);
+                return new JefeDptoResponse(result,"Error");
             }
             jefeDpto.Deliver(request.Identificacion,
                 request.Nombres,
@@ -60,11 +62,11 @@ namespace AppAC.Application
             }
             _unitOfWork.Commit();
             _emailServer.Send("Registro en AppAC","Se registro en el sistema",jefeDpto.Email);
-            return new JefeDptoResponse(response);
+            return new JefeDptoResponse(response,"Ok");
         }
     }
 
     public record JefeDptoRequest(string Identificacion, string Nombres, string Apellidos, string Email, string Sexo, int departamentoId);
 
-    public record JefeDptoResponse(string Mensaje);
+    public record JefeDptoResponse(string Mensaje, string MessageType);
 }

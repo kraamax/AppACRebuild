@@ -65,7 +65,7 @@ namespace AppAC.Infrastructure.WebApi.Test
             var responseHttp = await _client.PostAsync("api/Actividad", content);
             responseHttp.StatusCode.Should().Be(HttpStatusCode.OK);
             var respuesta = await responseHttp.Content.ReadAsStringAsync();
-            respuesta.Should().Contain("Se asignaron 10 al docente Sebastian");
+            respuesta.Should().Contain("Se asignaron 10 horas de Investigacion al docente Sebastian");
             var actividad = context.Actividades.FirstOrDefault(t => t.Asignador.Identificacion == "123454a");
             actividad.Should().NotBeNull();
         }

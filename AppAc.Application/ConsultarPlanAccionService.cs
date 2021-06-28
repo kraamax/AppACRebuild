@@ -18,9 +18,14 @@ namespace AppAc.Application
             _planAccionRepository = planAccionRepository;
         }
 
-        public PlanAccion Handle(int id)
+        public PlanAccion GetPlan(int id)
         {
             return _planAccionRepository.Find(id);
+        }
+
+        public PlanAccion GetByActividad(int actividadId)
+        {
+            return _planAccionRepository.FindByActividad(actividadId);
         }
     }
 

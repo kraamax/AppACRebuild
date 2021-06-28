@@ -20,6 +20,7 @@ namespace AppAC.Application.Test
         private PlanAccionRepository _planAccionRepository;
         private ItemPlanRepository _itemPlanRepository;
         private PlazoAperturaRepository _plazoAperturaRepository;
+        private PlazoAperturaService _plazoAperturaService;
 
         [SetUp]
         public void Setup()
@@ -41,6 +42,12 @@ namespace AppAC.Application.Test
                 _itemPlanRepository,
                 _plazoAperturaRepository
                 );
+            _plazoAperturaService = new PlazoAperturaService(
+                new UnitOfWork(_dbContext),
+                _plazoAperturaRepository,
+                new MailServerFake(),
+                new JefeDptoRepository(_dbContext)
+            );
         }
 
         [Test]
@@ -48,10 +55,11 @@ namespace AppAC.Application.Test
         {
 
             var plan=PlanAccionMother.CreatePlanAccion();
-            var plazo = PlazoAperturaMother.CreatePlazoApertura("123313");
-            _plazoAperturaRepository.Add(plazo);
             _planAccionRepository.Add(plan);
             _dbContext.SaveChanges();
+            var plazo = PlazoAperturaMother.CreatePlazoApertura("123313");
+            var plazoRequest = new PlazoAperturaRequest("123313",plazo.FechaInicio,plazo.FechaFin);
+            _plazoAperturaService.CrearPlazoApertura(plazoRequest).Message.Should().Be("El plazo fue correctamente ingresado"); 
             var request = new ItemPlanRequest(1,"Se describe aqui","Se describe lo que se hizo","loquesea/dir");
             var response = _itemPlanService.RegistrarItem(request);
             response.Message.Should().Be("Item registrado correctamente");
@@ -72,10 +80,12 @@ namespace AppAC.Application.Test
         {
 
             var plan=PlanAccionMother.CreatePlanAccion();
-            var plazo = PlazoAperturaMother.CreatePlazoAperturaVencido("123313");
-            _plazoAperturaRepository.Add(plazo);
             _planAccionRepository.Add(plan);
             _dbContext.SaveChanges();
+            var plazo = PlazoAperturaMother.CreatePlazoAperturaVencido("123313");
+            var plazoRequest = new PlazoAperturaRequest("123313",plazo.FechaInicio,plazo.FechaFin);
+            _plazoAperturaService.CrearPlazoApertura(plazoRequest).Message.Should().Be("El plazo fue correctamente ingresado");
+            
             var request = new ItemPlanRequest(1,"Se describe aqui","Se describe lo que se hizo","loquesea/dir");
             var response = _itemPlanService.RegistrarItem(request);
             response.Message.Should().Be("Error: La fecha no esta dentro del plazo establecido por el jefe de departamento");
@@ -85,9 +95,10 @@ namespace AppAC.Application.Test
         {
             var plan=PlanAccionMother.CreatePlanAccion();
             _planAccionRepository.Add(plan);
-            var plazo = PlazoAperturaMother.CreatePlazoApertura("123313");
-            _plazoAperturaRepository.Add(plazo);
             _dbContext.SaveChanges();
+            var plazo = PlazoAperturaMother.CreatePlazoApertura("123313");
+            var plazoRequest = new PlazoAperturaRequest("123313",plazo.FechaInicio,plazo.FechaFin);
+            _plazoAperturaService.CrearPlazoApertura(plazoRequest).Message.Should().Be("El plazo fue correctamente ingresado"); 
             var request = new ItemPlanRequest(1,"Se describe aqui","Se describe lo que se hizo","loquesea/dir");
             _itemPlanService.RegistrarItem(request);
             var response = _itemPlanService.EliminarItem(1);
@@ -108,11 +119,12 @@ namespace AppAC.Application.Test
         [Test]
         public void PuedoModificarItem()
         {
-            var plan = PlanAccionMother.CreatePlanAccion();
-            var plazo = PlazoAperturaMother.CreatePlazoApertura("123313");
-            _plazoAperturaRepository.Add(plazo);
+            var plan=PlanAccionMother.CreatePlanAccion();
             _planAccionRepository.Add(plan);
             _dbContext.SaveChanges();
+            var plazo = PlazoAperturaMother.CreatePlazoApertura("123313");
+            var plazoRequest = new PlazoAperturaRequest("123313",plazo.FechaInicio,plazo.FechaFin);
+            _plazoAperturaService.CrearPlazoApertura(plazoRequest).Message.Should().Be("El plazo fue correctamente ingresado"); 
             var request = new ItemPlanUpdateRequest(1, "Se describe aqui dsadasdad", "Se describe lo que se hizo",
                 "loquesea/dir");
             var response = _itemPlanService.ModificarItem(request);
@@ -123,10 +135,11 @@ namespace AppAC.Application.Test
         public void NoPuedoModificarItemSiNoEstaDentroDelPlazoDeAperturaEstablecido()
         {
             var plan=PlanAccionMother.CreatePlanAccion();
-            var plazo = PlazoAperturaMother.CreatePlazoAperturaVencido("123313");
-            _plazoAperturaRepository.Add(plazo);
             _planAccionRepository.Add(plan);
             _dbContext.SaveChanges();
+            var plazo = PlazoAperturaMother.CreatePlazoAperturaVencido("123313");
+            var plazoRequest = new PlazoAperturaRequest("123313",plazo.FechaInicio,plazo.FechaFin);
+            _plazoAperturaService.CrearPlazoApertura(plazoRequest).Message.Should().Be("El plazo fue correctamente ingresado");          
             var request = new ItemPlanUpdateRequest(1,"Se describe aqui dsadasdad","Se describe lo que se hizo","loquesea/dir");
             var response = _itemPlanService.ModificarItem(request);
             response.Message.Should().Be("Error: La fecha no esta dentro del plazo establecido por el jefe de departamento");
@@ -136,9 +149,10 @@ namespace AppAC.Application.Test
         {
             var plan=PlanAccionMother.CreatePlanAccion();
             _planAccionRepository.Add(plan);
-            var plazo = PlazoAperturaMother.CreatePlazoAperturaVencido("123313");
-            _plazoAperturaRepository.Add(plazo);
             _dbContext.SaveChanges();
+            var plazo = PlazoAperturaMother.CreatePlazoAperturaVencido("123313");
+            var plazoRequest = new PlazoAperturaRequest("123313",plazo.FechaInicio,plazo.FechaFin);
+            _plazoAperturaService.CrearPlazoApertura(plazoRequest).Message.Should().Be("El plazo fue correctamente ingresado");
             var request = new ItemPlanRequest(1,"Se describe aqui","Se describe lo que se hizo","loquesea/dir");
             _itemPlanService.RegistrarItem(request);
             var response = _itemPlanService.EliminarItem(1);

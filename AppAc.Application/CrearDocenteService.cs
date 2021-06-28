@@ -26,9 +26,11 @@ namespace AppAC.Application
 
         public DocenteResponse Handle(DocenteRequest request)
         {
+            if (_docenteRepository.FindDocente(request.Identificacion) != null)
+                return new DocenteResponse("Ya existe el docente con esa identificacion","Error");
             var departamento = _departamentoRepository.Find(request.departamentoId);
             if (departamento == null)
-                return new DocenteResponse("Se debe asignar un departamento al docente");
+                return new DocenteResponse("Se debe asignar un departamento al docente","Error");
             var docente = new Docente();
             var errors = docente.CanDeliver(request.Identificacion,
                 request.Nombres,
@@ -39,7 +41,7 @@ namespace AppAC.Application
             if (errors.Any())
             {
                 var result = String.Join(", ", errors.ToArray());
-                return new DocenteResponse(result);
+                return new DocenteResponse(result,"Error");
             }
             docente.Deliver(request.Identificacion,
                 request.Nombres,
@@ -59,11 +61,11 @@ namespace AppAC.Application
             }
             _unitOfWork.Commit();
             _emailServer.Send("Registro en AppAC","Se registro en el sistema",docente.Email);
-            return new DocenteResponse(response);
+            return new DocenteResponse(response,"Ok");
         }
     }
 
     public record DocenteRequest(string Identificacion, string Nombres, string Apellidos, string Email, string Sexo, int departamentoId);
 
-    public record DocenteResponse(string Mensaje);
+    public record DocenteResponse(string Mensaje, String MessageType);
 }

@@ -32,11 +32,11 @@ namespace AppAC.Infrastructure.WebApi.Controllers
             _jefeDptoRepository = jefeDptoRepository;
         }
         [HttpPost]
-        public string PostCrearPlazoApertura(PlazoAperturaRequest request)
+        public IActionResult PostCrearPlazoApertura(PlazoAperturaRequest request)
         {
             var service = new PlazoAperturaService(_unitOfWork ,_plazoAperturaRepository, _mailServer,_jefeDptoRepository);
             var response = service.CrearPlazoApertura(request);
-            return response;
+            return Ok(response);
         }
         [HttpGet("GetAll")]
         public IActionResult GetAll()
@@ -52,5 +52,13 @@ namespace AppAC.Infrastructure.WebApi.Controllers
             var response = service.GetByJefeDpto(identificacion);
             return Ok(response);
         }
+        [HttpGet("GetCurrentByJefeDpto/{identificacion}")]
+        public IActionResult GetCurrentByJefeDpto(string identificacion)
+        {
+            var service = new PlazoAperturaService(_unitOfWork ,_plazoAperturaRepository, _mailServer,_jefeDptoRepository);
+            var response = service.GetCurrentByJefeDpto(identificacion);
+            return Ok(response);
+        }
+        
     }
 }

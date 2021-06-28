@@ -10,7 +10,7 @@ namespace AppAC.Domain
         public Evidencia Evidencia { get; private set; }
         public IReadOnlyList<string> CanDeliver(string descripcion, Evidencia evidencia) {
             var errors = new List<string>();
-            if (string.IsNullOrWhiteSpace(descripcion))
+            if (descripcion==null)
                 errors.Add("Debe ingresar una descripción");
 
             if (evidencia==null)

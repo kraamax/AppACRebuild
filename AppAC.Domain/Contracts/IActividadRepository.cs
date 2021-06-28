@@ -8,6 +8,7 @@ namespace AppAC.Domain.Contracts
     public interface IActividadRepository:IGenericRepository<Actividad>
     {
         Actividad Find(int id);
+        IEnumerable<Actividad> FindByDocente(string identificacion);
 
     }
 }

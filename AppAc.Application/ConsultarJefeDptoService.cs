@@ -23,7 +23,7 @@ namespace AppAC.Application
         }
         public JefeDpto GetByIdentificacion( string identificion )
         {
-            return _jefeDptoRepository.FindFirstOrDefault(j=>j.Identificacion==identificion);
+            return _jefeDptoRepository.FindByIdentificacion(identificion);
         }
     }
 

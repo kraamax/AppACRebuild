@@ -38,6 +38,11 @@ namespace AppAC.Application.Test.Dobles
             return new Actividad(actividad,asignador);
         }
 
+        public IEnumerable<Actividad> FindByDocente(string identificacion)
+        {
+            throw new NotImplementedException();
+        }
+
         public Actividad Find(object id)
         {
             throw new NotImplementedException();

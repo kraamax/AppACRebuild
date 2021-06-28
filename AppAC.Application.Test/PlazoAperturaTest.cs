@@ -45,7 +45,7 @@ namespace AppAC.Application.Test
             _dbContext.SaveChanges();
             var request = new PlazoAperturaRequest("1234",fechaInicio,fechaFin);
             var response = _plazoAperturaService.CrearPlazoApertura(request);
-            Assert.AreEqual("La fecha de inicio no puede ser mayor o igual a la fecha de fin", response);
+            Assert.AreEqual("La fecha de inicio no puede ser mayor o igual a la fecha de fin", response.Message);
         }
         [Test]
         public void PuedoGuardarPlazoApertura()
@@ -57,7 +57,7 @@ namespace AppAC.Application.Test
             _dbContext.SaveChanges();
             var request = new PlazoAperturaRequest("1234",fechaInicio,fechaFin);
             var response = _plazoAperturaService.CrearPlazoApertura(request);
-            Assert.AreEqual("El plazo fue correctamente ingresado", response);
+            Assert.AreEqual("El plazo fue correctamente ingresado", response.Message);
         }
         [Test]
         public void NoPuedoGuardarPlazoAperturaSiNoExisteUnJefeDptoCreador()
@@ -66,7 +66,7 @@ namespace AppAC.Application.Test
             var fechaFin = new DateTime(2021, 03, 20);
             var request = new PlazoAperturaRequest("1234",fechaInicio,fechaFin);
             var response = _plazoAperturaService.CrearPlazoApertura(request);
-            Assert.AreEqual("No existe el Jefe de departamento", response);
+            Assert.AreEqual("No existe el Jefe de departamento", response.Message);
         }
     }
 }
