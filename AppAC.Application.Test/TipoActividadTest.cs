@@ -34,9 +34,9 @@ namespace AppAC.Application.Test
         [Test]
         public void PuedoGuardarActividadTest()
         {
-            var request = new TipoActividadRequest("Investigación");
+            var request = new TipoActividadRequest("Prueba");
             var response = _tipoActividadService.CrearTipoActividad(request).Mensaje;
-            Assert.AreEqual("Actividad Investigación guardada", response);
+            Assert.AreEqual("Actividad Prueba guardada", response);
         }
 
         [Test] public void NoPuedoGuardarActividadConElMismoNombreTest()

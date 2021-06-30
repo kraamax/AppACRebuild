@@ -65,7 +65,7 @@ namespace AppAC.Application.Test
                 jefeDpto.Apellidos,
                 jefeDpto.Email,
                 jefeDpto.Sexo,
-                3
+                100
             );
             var response = _crearJefeDptoService.Handle(request).Mensaje;
             Assert.AreEqual("Se debe asignar un departamento al Jefe de departamento", response);

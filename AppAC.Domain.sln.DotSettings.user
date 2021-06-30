@@ -1,49 +1,23 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=6A81F6AE_002DB946_002D4AB3_002D803E_002D1B9DADA500D2_002Ff_003AUsuarioService_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
 	<s:String x:Key="/Default/Environment/Highlighting/HighlightingSourceSnapshotLocation/@EntryValue">C:\Users\Sebastian\AppData\Local\JetBrains\Rider2021.1\resharper-host\temp\Rider\vAny\CoverageData\_AppAC.Domain.10463045\Snapshot\snapshot.utdcvr</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=14dd4f68_002D53c2_002D4690_002Db5ed_002D3766c50ef68c/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="LoginTests #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::CC0E34C3-E091-4172-9B82-9EE76BA6EB0D::net5.0::AppAC.FrontEnd.Test.UnitTest1.LoginTests&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=3a61b301_002D2350_002D4f14_002D94ba_002Dfb7770cb1359/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Session" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Or&gt;&#xD;
+    &lt;Project Location="C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Application.Test" Presentation="&amp;lt;AppAC.Application.Test&amp;gt;" /&gt;&#xD;
+    &lt;Project Location="C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Domain.Test" Presentation="&amp;lt;AppAC.Domain.Test&amp;gt;" /&gt;&#xD;
+    &lt;Project Location="C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.FrontEnd.Test" Presentation="&amp;lt;AppAC.FrontEnd.Test&amp;gt;" /&gt;&#xD;
+    &lt;Project Location="C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Infrastructure.WebApi.Test" Presentation="&amp;lt;AppAC.Infrastructure.WebApi.Test&amp;gt;" /&gt;&#xD;
+  &lt;/Or&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=15d99843_002D82dc_002D4b6e_002D933c_002D5442d6281cda/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests from &amp;lt;AppAC.FrontEnd.Test&amp;gt;" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;Project Location="C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.FrontEnd.Test" Presentation="&amp;lt;AppAC.FrontEnd.Test&amp;gt;" /&gt;&#xD;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1c2bf9db_002Dfa3a_002D4a42_002D9c92_002D70081799e589/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="UnitTest1" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::CC0E34C3-E091-4172-9B82-9EE76BA6EB0D::net5.0::AppAC.FrontEnd.Test.UnitTest1&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=5b61902d_002Dd852_002D4d69_002Da65b_002Dd73947af5b0e/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="LoginTests #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::CC0E34C3-E091-4172-9B82-9EE76BA6EB0D::net5.0::AppAC.FrontEnd.Test.UnitTest1.LoginTests&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=75209d6b_002D38a0_002D495c_002D913e_002Db47b4ddf1087/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Test1" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::CC0E34C3-E091-4172-9B82-9EE76BA6EB0D::net5.0::AppAC.FrontEnd.Test.UnitTest1&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=871c075c_002D002e_002D46b6_002D9936_002D847cc783f8b0/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="LoginTests #5" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::CC0E34C3-E091-4172-9B82-9EE76BA6EB0D::net5.0::AppAC.FrontEnd.Test.UnitTest1.LoginTests&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=9d8e5869_002Dd7a2_002D4d8c_002D85e6_002D1ec44f99795b/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="LoginTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::CC0E34C3-E091-4172-9B82-9EE76BA6EB0D::net5.0::AppAC.FrontEnd.Test.UnitTest1.LoginTests&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c7b81d05_002Dcf13_002D4948_002Dafdf_002D885dda6970e4/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="LoginTests #4" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::CC0E34C3-E091-4172-9B82-9EE76BA6EB0D::net5.0::AppAC.FrontEnd.Test.UnitTest1.LoginTests&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=f5da270c_002D9a05_002D4599_002D85f3_002D5de2bec29ee8/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="LoginTests #6" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::CC0E34C3-E091-4172-9B82-9EE76BA6EB0D::net5.0::AppAC.FrontEnd.Test.UnitTest1.LoginTests&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String>
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	<s:String x:Key="/Default/Housekeeping/UnitTestingMru/UnitTestRunner/HangingTestRunnerResponse/@EntryValue">KillProcess</s:String>
 	
 	</wpf:ResourceDictionary>

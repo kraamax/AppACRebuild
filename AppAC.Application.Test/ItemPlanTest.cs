@@ -110,7 +110,7 @@ namespace AppAC.Application.Test
             var plan=PlanAccionMother.CreatePlanAccion();
             _planAccionRepository.Add(plan);
             _dbContext.SaveChanges();
-            var request = new ItemPlanRequest(1,"Se describe aqui","Se describe lo que se hizo","loquesea/dir");
+            var request = new ItemPlanRequest(100,"Se describe aqui","Se describe lo que se hizo","loquesea/dir");
             _itemPlanService.RegistrarItem(request);
             var response = _itemPlanService.EliminarItem(100);
             response.Message.Should().Be("No se encontró el item");

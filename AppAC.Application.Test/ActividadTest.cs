@@ -53,7 +53,7 @@ namespace AppAC.Application.Test
             _dbContext.SaveChanges();
             var request = new ActividadRequest(1 ,"11223334","103523423", 10);
             var response = _asignarActividadService.Handle(request);
-            response.Message.Should().Be("Se asignaron 10 horas de Investigaci�n al docente Sebastian");
+            response.Message.Should().Be("Se asignaron 10 horas de Extensión al docente Sebastian");
         }
         [Test]
         public void NoPuedoAsignarActividadAUnDocenteSiNoExiste()
