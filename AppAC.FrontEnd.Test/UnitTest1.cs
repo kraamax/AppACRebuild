@@ -21,7 +21,10 @@ namespace AppAC.FrontEnd.Test
             driver.Close();
             driver.Quit();
         }
-        [Fact]
+
+        const string skip = "Class X disabled";
+
+        [Fact(Skip=skip)]
         //public void LoginTests(string user, string password, string cargo)
         
         public void LoginTests()
