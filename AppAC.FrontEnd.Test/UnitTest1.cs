@@ -25,8 +25,6 @@ namespace AppAC.FrontEnd.Test
         const string skip = "Class X disabled";
 
         [Fact(Skip=skip)]
-        //public void LoginTests(string user, string password, string cargo)
-        
         public void LoginTests()
         {
             string user="gola";
@@ -39,7 +37,46 @@ namespace AppAC.FrontEnd.Test
             txtPassword.SendKeys(password);
             IWebElement login = driver.FindElement(By.Id("btn-login"));
             login.Click();
+            Thread.Sleep(1000);
+            IWebElement toast = driver.FindElement(By.Id("toast-container"));
+            toast.Click();
+            Console.WriteLine("hogksadkadkad");
             Thread.Sleep(3000);
+           
+        }
+        [Fact(Skip=skip)]
+        public void LoginValidoJefeDptoTests()
+        {
+            string user="prueba1@prueba";
+            string password = "777";
+            driver.Navigate().GoToUrl("http://localhost:4200/login");
+            IWebElement txtUser = driver.FindElement(By.Id("userName"));
+            txtUser.SendKeys(user);
+            IWebElement txtPassword = driver.FindElement(By.Id("password"));
+            txtPassword.SendKeys(password);
+            IWebElement login = driver.FindElement(By.Id("btn-login"));
+            login.Click();
+            Thread.Sleep(1000);
+
+            
+           
+        }
+
+        [Fact(Skip=skip)]
+        public void AgregarDocenteTest()
+        {
+            LoginValidoJefeDptoTests();
+            Thread.Sleep(3000);
+            driver.FindElement(By.Id("btn-docente")).Click();
+            driver.FindElement(By.Id("btn-addDocente")).Click();
+            /*IWebElement txtUser = driver.FindElement(By.Id("userName"));
+            txtUser.SendKeys( "");
+            IWebElement txtPassword = driver.FindElement(By.Id("password"));
+            txtPassword.SendKeys("password");
+            IWebElement login = driver.FindElement(By.Id("btn-login"));
+            login.Click();*/
+            //id="btn-docente"
+
            
         }
     }

@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppAC.Infrastructure.WebApi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppAC.FrontEnd.Test", "AppAC.FrontEnd.Test\AppAC.FrontEnd.Test.csproj", "{CC0E34C3-E091-4172-9B82-9EE76BA6EB0D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppAC.Front.Test", "AppAC.Front.Test\AppAC.Front.Test.csproj", "{9677A2C2-E9EC-467D-98A8-85E86D72F035}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{CC0E34C3-E091-4172-9B82-9EE76BA6EB0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC0E34C3-E091-4172-9B82-9EE76BA6EB0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC0E34C3-E091-4172-9B82-9EE76BA6EB0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9677A2C2-E9EC-467D-98A8-85E86D72F035}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9677A2C2-E9EC-467D-98A8-85E86D72F035}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9677A2C2-E9EC-467D-98A8-85E86D72F035}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9677A2C2-E9EC-467D-98A8-85E86D72F035}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

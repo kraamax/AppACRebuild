@@ -1,13 +1,24 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=6A81F6AE_002DB946_002D4AB3_002D803E_002D1B9DADA500D2_002Ff_003AUsuarioService_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
 	<s:String x:Key="/Default/Environment/Highlighting/HighlightingSourceSnapshotLocation/@EntryValue">C:\Users\Sebastian\AppData\Local\JetBrains\Rider2021.1\resharper-host\temp\Rider\vAny\CoverageData\_AppAC.Domain.10463045\Snapshot\snapshot.utdcvr</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=3a61b301_002D2350_002D4f14_002D94ba_002Dfb7770cb1359/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Session" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=3357ff8b_002Ddf97_002D485f_002Dabd6_002D02cc75bbe0da/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="LoginTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::9677A2C2-E9EC-467D-98A8-85E86D72F035::net5.0::AppAC.Front.Test.Tests.LoginTests&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=3a61b301_002D2350_002D4f14_002D94ba_002Dfb7770cb1359/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Session" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Or&gt;&#xD;
     &lt;Project Location="C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Application.Test" Presentation="&amp;lt;AppAC.Application.Test&amp;gt;" /&gt;&#xD;
     &lt;Project Location="C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Domain.Test" Presentation="&amp;lt;AppAC.Domain.Test&amp;gt;" /&gt;&#xD;
     &lt;Project Location="C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.FrontEnd.Test" Presentation="&amp;lt;AppAC.FrontEnd.Test&amp;gt;" /&gt;&#xD;
     &lt;Project Location="C:\Users\Sebastian\source\repos\AppAC.Domain\AppAC.Infrastructure.WebApi.Test" Presentation="&amp;lt;AppAC.Infrastructure.WebApi.Test&amp;gt;" /&gt;&#xD;
+    &lt;TestAncestor&gt;&#xD;
+      &lt;TestId&gt;NUnit3x::9677A2C2-E9EC-467D-98A8-85E86D72F035::net5.0::AppAC.Front.Test.Tests.LoginTests&lt;/TestId&gt;&#xD;
+    &lt;/TestAncestor&gt;&#xD;
   &lt;/Or&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=bf327f5c_002D891f_002D4543_002D97d3_002D6dcf3c21c2f6/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="LoginTests #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Solution /&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	
 	
