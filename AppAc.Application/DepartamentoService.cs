@@ -45,7 +45,7 @@ namespace AppAC.Application
         }
         public IEnumerable<Departamento> GetAll()
         {
-            return _departamentoRepository.GetAll();
+            return _departamentoRepository.GetAll().Where(x=>x.Id!=1);
         }
     }
     public record DepartamentoRequest(string Codigo, string Nombre);

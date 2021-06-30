@@ -72,6 +72,42 @@ namespace AppAC.Infrastructure.Data.Migrations
                         {
                             Id = 1,
                             CodigoDpto = "ss232",
+                            NombreDpto = "Prueba"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CodigoDpto = "ss432",
+                            NombreDpto = "Ingeniería de Sistemas"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CodigoDpto = "ss1233",
+                            NombreDpto = "Ingeniería ambiental"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CodigoDpto = "s165",
+                            NombreDpto = "Licenciatura en Lenguas"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CodigoDpto = "re342",
+                            NombreDpto = "Ingeniería Electronica"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CodigoDpto = "fs482",
+                            NombreDpto = "Licenciatura en ciencias"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CodigoDpto = "kg213",
                             NombreDpto = "Matematicas y Fisica"
                         });
                 });
@@ -151,6 +187,28 @@ namespace AppAC.Infrastructure.Data.Migrations
                     b.HasAlternateKey("NombreActividad");
 
                     b.ToTable("TiposActividades");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            NombreActividad = "Extensión"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            NombreActividad = "Investigación"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            NombreActividad = "Tutorias"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            NombreActividad = "Asesorias"
+                        });
                 });
 
             modelBuilder.Entity("AppAC.Domain.Usuario", b =>
@@ -212,6 +270,21 @@ namespace AppAC.Infrastructure.Data.Migrations
                         .IsUnique();
 
                     b.HasDiscriminator().HasValue("Docente");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Apellidos = "Prueba p",
+                            Discriminator = "Docente",
+                            Email = "prueba2@prueba",
+                            Identificacion = "123prueba",
+                            Nombres = "UsuarioD Doc",
+                            Password = "777",
+                            Sexo = "Masculino",
+                            UserName = "prueba2@prueba",
+                            DepartamentoId = 1
+                        });
                 });
 
             modelBuilder.Entity("AppAC.Domain.JefeDpto", b =>
@@ -227,6 +300,21 @@ namespace AppAC.Infrastructure.Data.Migrations
                         .IsUnique();
 
                     b.HasDiscriminator().HasValue("JefeDpto");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 2,
+                            Apellidos = "Prueba p",
+                            Discriminator = "JefeDpto",
+                            Email = "prueba1@prueba",
+                            Identificacion = "1233prueba",
+                            Nombres = "UsuarioJ Jefe",
+                            Password = "777",
+                            Sexo = "Masculino",
+                            UserName = "prueba1@prueba",
+                            DepartamentoId = 1
+                        });
                 });
 
             modelBuilder.Entity("AppAC.Domain.Actividad", b =>
