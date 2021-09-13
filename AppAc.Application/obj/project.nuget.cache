@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "L6pIfiAuzN21ZEqjBIbL7p2y9a1ksnPOqU3li5ToM7N7ghoLV6EMUDJjT1XUYvG0cQ04FSHKp9da8R5EZCgkhw==",
+  "dgSpecHash": "2/X5mqTKQfh4hFu4qLqXuyreYYMr1vXMeEbQibrUhgr75o5bYtpYOFwQFNv7+klcJjhtwIZxwFIKZyeZwdTqMQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Sebastian\\source\\repos\\AppAC.Domain\\AppAc.Application\\AppAC.Application.csproj",
+  "projectFilePath": "C:\\web\\AppACRebuild\\AppAc.Application\\AppAC.Application.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
